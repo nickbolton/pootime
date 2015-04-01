@@ -9,6 +9,7 @@
 #import "PTDefaultsManager.h"
 
 static NSString * const kPTSelectedCalendarIDKey = @"pt-selected-calendar-id";
+static NSString * const kPTLastEventIDKey = @"pt-last-event-id";
 
 @implementation PTDefaultsManager
 
@@ -18,6 +19,14 @@ static NSString * const kPTSelectedCalendarIDKey = @"pt-selected-calendar-id";
 
 - (NSString *)selectedCalendarID {
     return [self stringForKey:kPTSelectedCalendarIDKey];
+}
+
+- (void)setLastEventID:(NSString *)lastEventID {
+    [self setString:lastEventID forKey:kPTLastEventIDKey];
+}
+
+- (NSString *)lastEventID {
+    return [self stringForKey:kPTLastEventIDKey];
 }
 
 #pragma mark - Private

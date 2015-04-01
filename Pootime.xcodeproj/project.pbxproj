@@ -26,6 +26,8 @@
 		FCA88F781ACB7741006670A6 /* PTDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F771ACB7741006670A6 /* PTDefaultsManager.m */; };
 		FCA88F7C1ACC088A006670A6 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA88F7B1ACC088A006670A6 /* EventKit.framework */; };
 		FCA88F7D1ACC0897006670A6 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA88F7B1ACC088A006670A6 /* EventKit.framework */; };
+		FCA88F801ACC10A3006670A6 /* PTCalendarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F7F1ACC10A3006670A6 /* PTCalendarManager.m */; };
+		FCA88F811ACC117D006670A6 /* PTCalendarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F7F1ACC10A3006670A6 /* PTCalendarManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,8 @@
 		FCA88F791ACB8348006670A6 /* pOOO Time.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "pOOO Time.entitlements"; sourceTree = "<group>"; };
 		FCA88F7A1ACB8806006670A6 /* pOOO Time WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "pOOO Time WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		FCA88F7B1ACC088A006670A6 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		FCA88F7E1ACC10A3006670A6 /* PTCalendarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCalendarManager.h; sourceTree = "<group>"; };
+		FCA88F7F1ACC10A3006670A6 /* PTCalendarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCalendarManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,8 @@
 				FCA88F261ACB6A5A006670A6 /* AppDelegate.m */,
 				FCA88F281ACB6A5A006670A6 /* PTViewController.h */,
 				FCA88F291ACB6A5A006670A6 /* PTViewController.m */,
+				FCA88F7E1ACC10A3006670A6 /* PTCalendarManager.h */,
+				FCA88F7F1ACC10A3006670A6 /* PTCalendarManager.m */,
 				FCA88F6D1ACB741E006670A6 /* PTBaseViewController.h */,
 				FCA88F6E1ACB741E006670A6 /* PTBaseViewController.m */,
 				FCA88F731ACB758A006670A6 /* PTTableViewController.h */,
@@ -469,6 +475,7 @@
 				FCA88F271ACB6A5A006670A6 /* AppDelegate.m in Sources */,
 				FCA88F241ACB6A5A006670A6 /* main.m in Sources */,
 				FCA88F751ACB758A006670A6 /* PTTableViewController.m in Sources */,
+				FCA88F801ACC10A3006670A6 /* PTCalendarManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCA88F511ACB6A82006670A6 /* InterfaceController.m in Sources */,
+				FCA88F811ACC117D006670A6 /* PTCalendarManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

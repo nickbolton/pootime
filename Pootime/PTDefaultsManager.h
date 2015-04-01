@@ -11,6 +11,7 @@
 @interface PTDefaultsManager : NSObject
 
 @property (nonatomic, strong) NSString *selectedCalendarID;
+@property (nonatomic, strong) NSString *lastEventID;
 
 + (instancetype)sharedInstance;
 - (void)registerDefaults;

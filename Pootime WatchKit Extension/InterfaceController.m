@@ -8,28 +8,21 @@
 
 #import "InterfaceController.h"
 #import "MMWormhole.h"
-#import <EventKit/EventKit.h>
 #import "Bedrock.h"
+#import "PTCalendarManager.h"
 
 @interface InterfaceController()
 
 @property (nonatomic, strong) MMWormhole *wormhole;
 @property (nonatomic, strong) NSString *calendarID;
-@property (nonatomic, strong) EKEventStore *eventStore;
 @property (nonatomic, strong) NSString *lastEventIdentifier;
 
 @end
 
 @implementation InterfaceController
 
-- (void)setupEventStore {
-    
-    self.eventStore = [[EKEventStore alloc] init];
-}
-
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
-    [self setupEventStore];
     
     // Initialize the wormhole
     self.wormhole =
@@ -39,18 +32,29 @@
     
     // Obtain an initial value for the selection message from the wormhole
     self.calendarID = [self.wormhole messageWithIdentifier:@"calendarIdentifier"];
+    self.lastEventIdentifier = [self.wormhole messageWithIdentifier:@"lastEventIdentifier"];
 
     NSLog(@"calendarIdentifier: %@", self.calendarID);
+    NSLog(@"lastEventIdentifier: %@", self.lastEventIdentifier);
     
     // Listen for changes to the selection message. The selection message contains a string value
     // identified by the selectionString key. Note that the type of the key is included in the
     // name of the key.
     
     __weak typeof(self) this = self;
-    [self.wormhole listenForMessageWithIdentifier:@"calendarIdentifier" listener:^(id messageObject) {
+    [self.wormhole
+     listenForMessageWithIdentifier:@"calendarIdentifier"
+     listener:^(id messageObject) {
         this.calendarID = messageObject;
-        NSLog(@"calendarIdentifier: %@", this.calendarID);
+        PBLog(@"calendarIdentifier: %@", this.calendarID);
     }];
+    
+    [self.wormhole
+     listenForMessageWithIdentifier:@"lastEventIdentifier"
+     listener:^(id messageObject) {
+         this.lastEventIdentifier = messageObject;
+         PBLog(@"lastEventIdentifier: %@", this.lastEventIdentifier);
+     }];
 }
 
 - (void)willActivate {
@@ -64,69 +68,19 @@
 #pragma mark - Actions
 
 - (IBAction)pootime:(id)sender {
-//    [self.wormhole passMessageObject:[NSDate date] identifier:@"pootime"];
     
-    __weak typeof(self) this = self;
-    
-    [self.eventStore
-     requestAccessToEntityType:EKEntityTypeEvent
-     completion:^(BOOL granted, NSError *error) {
-
-         if (granted) {
-             [this doPooTime];
+    [[PTCalendarManager sharedInstance]
+     markPooTimeWithCalendarID:self.calendarID
+     eventIdentifier:self.lastEventIdentifier
+     completion:^(NSString *eventIdentifier) {
+         
+         if (eventIdentifier != nil) {
+             
+             [self.wormhole
+              passMessageObject:eventIdentifier
+              identifier:@"lastEventIdentifier"];
          }
      }];
-}
-
-- (void)doPooTime {
-
-    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [NSDateComponents new];
-    components.minute = 15;
-    
-    NSDate *now = [NSDate date];
-    NSDate *startTime = now;
-    NSDate *endTime = [currentCalendar dateByAddingComponents:components toDate:startTime options:0];
-    
-    EKCalendar *calendar = [self.eventStore calendarWithIdentifier:self.calendarID];
-
-    if (self.lastEventIdentifier != nil) {
-        
-        EKEvent *event = [self.eventStore eventWithIdentifier:self.lastEventIdentifier];
-        
-        if (event != nil) {
-            
-            if ([event.endDate isGreaterThan:startTime]) {
-                
-                event.endDate = endTime;
-                
-                NSError *error = nil;
-                [self.eventStore saveEvent:event span:EKSpanThisEvent commit:YES error:&error];
-                
-                if (error != nil) {
-                    PBLog(@"Error saving event: %@", error);
-                }
-
-                return;
-            }
-        }
-    }
-    
-    EKEvent *event = [EKEvent eventWithEventStore:self.eventStore];
-    event.availability = EKEventAvailabilityBusy;
-    event.title = @"pOOO Time";
-    event.calendar = calendar;
-    event.startDate = startTime;
-    event.endDate = endTime;
-    
-    NSError *error = nil;
-    [self.eventStore saveEvent:event span:EKSpanThisEvent commit:YES error:&error];
-    
-    if (error != nil) {
-        PBLog(@"Error saving event: %@", error);
-    }
-
-    self.lastEventIdentifier = event.eventIdentifier;
 }
 
 @end

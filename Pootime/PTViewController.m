@@ -8,17 +8,20 @@
 
 #import "PTViewController.h"
 #import "Bedrock.h"
-#import <EventKit/EventKit.h>
+#import "PTCalendarManager.h"
 #import "PTDefaultsManager.h"
 #import "MMWormhole.h"
+#import <EventKit/EventKit.h>
+
+static CGFloat const kPTBottomContainerHeight = 100.0f;
 
 static NSString * const kPTCalendarCellID = @"cell-id";
 
 @interface PTViewController ()
 
-@property (nonatomic, strong) EKEventStore *eventStore;
 @property (nonatomic) BOOL granted;
 @property (nonatomic, strong) MMWormhole *wormhole;
+@property (nonatomic, strong) UIButton *pooTimeButton;
 
 @end
 
@@ -27,6 +30,8 @@ static NSString * const kPTCalendarCellID = @"cell-id";
 #pragma mark - Setup
 
 - (void)setupTableView {
+    self.tableViewConstraintInsets = UIEdgeInsetsMake(0.0f, 0.0f, kPTBottomContainerHeight, 0.0f);
+    
     [super setupTableView];
     
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -43,18 +48,28 @@ static NSString * const kPTCalendarCellID = @"cell-id";
      forHeaderFooterViewReuseIdentifier:@"header"];
 }
 
-- (void)setupEventStore {
+- (void)setupPooTimeButton {
     
-    self.eventStore = [[EKEventStore alloc] init];
-        
-    __weak typeof(self) this = self;
+    static CGFloat const height = 50.0f;
     
-    [self.eventStore
-     requestAccessToEntityType:EKEntityTypeEvent
-     completion:^(BOOL granted, NSError *error) {
-         
-         this.granted = granted;
-     }];
+    UIButton *view = [UIButton buttonWithType:UIButtonTypeSystem];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [view setTitle:@"pOOO Time" forState:UIControlStateNormal];
+    
+    [view
+     addTarget:self
+     action:@selector(pooTimeTapped)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:view];
+    
+    [NSLayoutConstraint expandWidthToSuperview:view];
+    [NSLayoutConstraint addHeightConstraint:height toView:view];
+    [NSLayoutConstraint horizontallyCenterView:view];
+    [NSLayoutConstraint alignToBottom:view withPadding:-(kPTBottomContainerHeight-height)/2.0f];
+    
+    self.pooTimeButton = view;
 }
 
 - (void)setupWormhole {
@@ -66,28 +81,31 @@ static NSString * const kPTCalendarCellID = @"cell-id";
      optionalDirectory:@"wormhole"];
     
     // Obtain an initial message from the wormhole
-    id messageObject = [self.wormhole messageWithIdentifier:@"pootime"];
-    NSDate *pootime = messageObject;
-
-    NSLog(@"pootime: %@", pootime);
+    NSString *eventID = [self.wormhole messageWithIdentifier:@"lastEventIdentifier"];
     
-    // Become a listener for changes to the wormhole for the button message
-    [self.wormhole listenForMessageWithIdentifier:@"pootime" listener:^(id messageObject) {
-        // The number is identified with the buttonNumber key in the message object
-        NSDate *pootime = messageObject;
-        NSLog(@"pootime: %@", pootime);
-        
-        [UIAlertView
-         presentOKAlertWithTitle:[NSString stringWithFormat:@"pOOO Time: %@", pootime]
-         andMessage:nil];
-    }];
+    if (eventID != nil) {
+        [PTDefaultsManager sharedInstance].lastEventID = eventID;
+    }
+
+    NSLog(@"lastEventIdentifier: %@", eventID);
+    
+    [self.wormhole
+     listenForMessageWithIdentifier:@"lastEventIdentifier"
+     listener:^(id messageObject) {
+         
+         if (messageObject != nil) {
+             [PTDefaultsManager sharedInstance].lastEventID = messageObject;
+         }
+         
+         PBLog(@"lastEventIdentifier: %@", messageObject);
+     }];
 }
 
 #pragma mark - View Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupEventStore];
+    [self setupPooTimeButton];
     [self setupWormhole];
 }
 
@@ -98,51 +116,28 @@ static NSString * const kPTCalendarCellID = @"cell-id";
     [self reloadData:NO];
 }
 
+#pragma mark - Actions
+
+- (void)pooTimeTapped {
+    
+    [[PTCalendarManager sharedInstance]
+     markPooTimeWithCalendarID:[PTDefaultsManager sharedInstance].selectedCalendarID
+     eventIdentifier:[PTDefaultsManager sharedInstance].lastEventID
+     completion:^(NSString *eventIdentifier) {
+         
+         if (eventIdentifier != nil) {
+             
+             [self.wormhole
+              passMessageObject:eventIdentifier
+              identifier:@"lastEventIdentifier"];
+         }
+     }];
+}
+
 #pragma mark - DataSource
 
 - (NSArray *)buildDataSource {
-    
-    NSArray *allCalendars =
-    [self.eventStore calendarsForEntityType:EKEntityTypeEvent];
-    
-    NSPredicate *predicate =
-    [NSPredicate
-     predicateWithFormat:@"type != %d", EKCalendarTypeBirthday];
-    
-    NSArray *filteredCalendars =
-    [allCalendars filteredArrayUsingPredicate:predicate];
-    
-    NSMutableDictionary *buckets = [NSMutableDictionary dictionary];
-    
-    for (EKCalendar *calendar in filteredCalendars) {
-        
-        NSMutableArray *calendars = buckets[calendar.source.sourceIdentifier];
-        
-        if (calendars == nil) {
-            calendars = [NSMutableArray array];
-            buckets[calendar.source.sourceIdentifier] = calendars;
-        }
-        
-        [calendars addObject:calendar];
-    }
-    
-    NSSortDescriptor *sorter =
-    [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
-
-    NSArray *sources = buckets.allKeys;
-    sources = [sources sortedArrayUsingDescriptors:@[sorter]];
-    
-    NSMutableArray *sections = [NSMutableArray array];
-
-    for (NSString *sourceID in sources) {
-        
-        NSArray *calendars = buckets[sourceID];
-        calendars = [calendars sortedArrayUsingDescriptors:@[sorter]];
-        
-        [sections addObject:calendars];
-    }
-    
-    return sections;
+    return [PTCalendarManager sharedInstance].calendarSections;
 }
 
 #pragma mark -
