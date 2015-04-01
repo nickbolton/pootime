@@ -1,0 +1,732 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		19DBDD5A51B5B69B509EE251 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 901AD0C569E0DB2D2724CCA0 /* libPods.a */; };
+		D2CEB1B316DD68CAA288E014 /* libPods-pOOO Time WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E456CDE8DEBFCBD9ABBD8E94 /* libPods-pOOO Time WatchKit Extension.a */; };
+		FCA88F241ACB6A5A006670A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F231ACB6A5A006670A6 /* main.m */; };
+		FCA88F271ACB6A5A006670A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F261ACB6A5A006670A6 /* AppDelegate.m */; };
+		FCA88F2A1ACB6A5A006670A6 /* PTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F291ACB6A5A006670A6 /* PTViewController.m */; };
+		FCA88F2F1ACB6A5A006670A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA88F2E1ACB6A5A006670A6 /* Images.xcassets */; };
+		FCA88F321ACB6A5A006670A6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCA88F301ACB6A5A006670A6 /* LaunchScreen.xib */; };
+		FCA88F511ACB6A82006670A6 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F501ACB6A82006670A6 /* InterfaceController.m */; };
+		FCA88F531ACB6A82006670A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA88F521ACB6A82006670A6 /* Images.xcassets */; };
+		FCA88F571ACB6A82006670A6 /* pOOO Time WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = FCA88F561ACB6A82006670A6 /* pOOO Time WatchKit App.app */; };
+		FCA88F5F1ACB6A82006670A6 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA88F5D1ACB6A82006670A6 /* Interface.storyboard */; };
+		FCA88F611ACB6A82006670A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA88F601ACB6A82006670A6 /* Images.xcassets */; };
+		FCA88F641ACB6A82006670A6 /* pOOO Time WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FCA88F4B1ACB6A82006670A6 /* pOOO Time WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FCA88F6F1ACB741E006670A6 /* PTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F6E1ACB741E006670A6 /* PTBaseViewController.m */; };
+		FCA88F721ACB7503006670A6 /* PTAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F711ACB7503006670A6 /* PTAnalytics.m */; };
+		FCA88F751ACB758A006670A6 /* PTTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F741ACB758A006670A6 /* PTTableViewController.m */; };
+		FCA88F781ACB7741006670A6 /* PTDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F771ACB7741006670A6 /* PTDefaultsManager.m */; };
+		FCA88F7C1ACC088A006670A6 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA88F7B1ACC088A006670A6 /* EventKit.framework */; };
+		FCA88F7D1ACC0897006670A6 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA88F7B1ACC088A006670A6 /* EventKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FCA88F581ACB6A82006670A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCA88F161ACB6A5A006670A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCA88F551ACB6A82006670A6;
+			remoteInfo = "Pootime WatchKit App";
+		};
+		FCA88F621ACB6A82006670A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCA88F161ACB6A5A006670A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCA88F4A1ACB6A82006670A6;
+			remoteInfo = "Pootime WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FCA88F6B1ACB6A82006670A6 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FCA88F641ACB6A82006670A6 /* pOOO Time WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1EB0F6B98000178492BE4A4E /* Pods-pOOO Time WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pOOO Time WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-pOOO Time WatchKit Extension/Pods-pOOO Time WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		901AD0C569E0DB2D2724CCA0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC6A0D4F2E883F565ACB9FCE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DFBB99B4C14A67FAA5C9B376 /* Pods-pOOO Time WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pOOO Time WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pOOO Time WatchKit Extension/Pods-pOOO Time WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		E456CDE8DEBFCBD9ABBD8E94 /* libPods-pOOO Time WatchKit Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pOOO Time WatchKit Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC6201BE3D2C892E743E75E7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		FCA88F1E1ACB6A5A006670A6 /* pOOO Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pOOO Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCA88F221ACB6A5A006670A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCA88F231ACB6A5A006670A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FCA88F251ACB6A5A006670A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FCA88F261ACB6A5A006670A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FCA88F281ACB6A5A006670A6 /* PTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTViewController.h; sourceTree = "<group>"; };
+		FCA88F291ACB6A5A006670A6 /* PTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTViewController.m; sourceTree = "<group>"; };
+		FCA88F2E1ACB6A5A006670A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FCA88F311ACB6A5A006670A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		FCA88F3C1ACB6A5A006670A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCA88F3D1ACB6A5A006670A6 /* PootimeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PootimeTests.m; sourceTree = "<group>"; };
+		FCA88F4B1ACB6A82006670A6 /* pOOO Time WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "pOOO Time WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCA88F4E1ACB6A82006670A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCA88F4F1ACB6A82006670A6 /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		FCA88F501ACB6A82006670A6 /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		FCA88F521ACB6A82006670A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FCA88F561ACB6A82006670A6 /* pOOO Time WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pOOO Time WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCA88F5C1ACB6A82006670A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCA88F5E1ACB6A82006670A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		FCA88F601ACB6A82006670A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FCA88F6D1ACB741E006670A6 /* PTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBaseViewController.h; sourceTree = "<group>"; };
+		FCA88F6E1ACB741E006670A6 /* PTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTBaseViewController.m; sourceTree = "<group>"; };
+		FCA88F701ACB7503006670A6 /* PTAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTAnalytics.h; sourceTree = "<group>"; };
+		FCA88F711ACB7503006670A6 /* PTAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTAnalytics.m; sourceTree = "<group>"; };
+		FCA88F731ACB758A006670A6 /* PTTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTTableViewController.h; sourceTree = "<group>"; };
+		FCA88F741ACB758A006670A6 /* PTTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTTableViewController.m; sourceTree = "<group>"; };
+		FCA88F761ACB7741006670A6 /* PTDefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTDefaultsManager.h; sourceTree = "<group>"; };
+		FCA88F771ACB7741006670A6 /* PTDefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTDefaultsManager.m; sourceTree = "<group>"; };
+		FCA88F791ACB8348006670A6 /* pOOO Time.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "pOOO Time.entitlements"; sourceTree = "<group>"; };
+		FCA88F7A1ACB8806006670A6 /* pOOO Time WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "pOOO Time WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		FCA88F7B1ACC088A006670A6 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FCA88F1B1ACB6A5A006670A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCA88F7D1ACC0897006670A6 /* EventKit.framework in Frameworks */,
+				19DBDD5A51B5B69B509EE251 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCA88F481ACB6A82006670A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCA88F7C1ACC088A006670A6 /* EventKit.framework in Frameworks */,
+				D2CEB1B316DD68CAA288E014 /* libPods-pOOO Time WatchKit Extension.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1CE98D435BBA89C6742D96FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FCA88F7B1ACC088A006670A6 /* EventKit.framework */,
+				901AD0C569E0DB2D2724CCA0 /* libPods.a */,
+				E456CDE8DEBFCBD9ABBD8E94 /* libPods-pOOO Time WatchKit Extension.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3CC18687E3666A23AD065F92 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AC6A0D4F2E883F565ACB9FCE /* Pods.debug.xcconfig */,
+				FC6201BE3D2C892E743E75E7 /* Pods.release.xcconfig */,
+				DFBB99B4C14A67FAA5C9B376 /* Pods-pOOO Time WatchKit Extension.debug.xcconfig */,
+				1EB0F6B98000178492BE4A4E /* Pods-pOOO Time WatchKit Extension.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FCA88F151ACB6A5A006670A6 = {
+			isa = PBXGroup;
+			children = (
+				FCA88F7A1ACB8806006670A6 /* pOOO Time WatchKit Extension.entitlements */,
+				FCA88F791ACB8348006670A6 /* pOOO Time.entitlements */,
+				FCA88F201ACB6A5A006670A6 /* Pootime */,
+				FCA88F3A1ACB6A5A006670A6 /* PootimeTests */,
+				FCA88F4C1ACB6A82006670A6 /* Pootime WatchKit Extension */,
+				FCA88F5A1ACB6A82006670A6 /* Pootime WatchKit App */,
+				FCA88F1F1ACB6A5A006670A6 /* Products */,
+				3CC18687E3666A23AD065F92 /* Pods */,
+				1CE98D435BBA89C6742D96FF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FCA88F1F1ACB6A5A006670A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FCA88F1E1ACB6A5A006670A6 /* pOOO Time.app */,
+				FCA88F4B1ACB6A82006670A6 /* pOOO Time WatchKit Extension.appex */,
+				FCA88F561ACB6A82006670A6 /* pOOO Time WatchKit App.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FCA88F201ACB6A5A006670A6 /* Pootime */ = {
+			isa = PBXGroup;
+			children = (
+				FCA88F251ACB6A5A006670A6 /* AppDelegate.h */,
+				FCA88F261ACB6A5A006670A6 /* AppDelegate.m */,
+				FCA88F281ACB6A5A006670A6 /* PTViewController.h */,
+				FCA88F291ACB6A5A006670A6 /* PTViewController.m */,
+				FCA88F6D1ACB741E006670A6 /* PTBaseViewController.h */,
+				FCA88F6E1ACB741E006670A6 /* PTBaseViewController.m */,
+				FCA88F731ACB758A006670A6 /* PTTableViewController.h */,
+				FCA88F741ACB758A006670A6 /* PTTableViewController.m */,
+				FCA88F761ACB7741006670A6 /* PTDefaultsManager.h */,
+				FCA88F771ACB7741006670A6 /* PTDefaultsManager.m */,
+				FCA88F701ACB7503006670A6 /* PTAnalytics.h */,
+				FCA88F711ACB7503006670A6 /* PTAnalytics.m */,
+				FCA88F2E1ACB6A5A006670A6 /* Images.xcassets */,
+				FCA88F301ACB6A5A006670A6 /* LaunchScreen.xib */,
+				FCA88F211ACB6A5A006670A6 /* Supporting Files */,
+			);
+			path = Pootime;
+			sourceTree = "<group>";
+		};
+		FCA88F211ACB6A5A006670A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FCA88F221ACB6A5A006670A6 /* Info.plist */,
+				FCA88F231ACB6A5A006670A6 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FCA88F3A1ACB6A5A006670A6 /* PootimeTests */ = {
+			isa = PBXGroup;
+			children = (
+				FCA88F3D1ACB6A5A006670A6 /* PootimeTests.m */,
+				FCA88F3B1ACB6A5A006670A6 /* Supporting Files */,
+			);
+			path = PootimeTests;
+			sourceTree = "<group>";
+		};
+		FCA88F3B1ACB6A5A006670A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FCA88F3C1ACB6A5A006670A6 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FCA88F4C1ACB6A82006670A6 /* Pootime WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FCA88F4F1ACB6A82006670A6 /* InterfaceController.h */,
+				FCA88F501ACB6A82006670A6 /* InterfaceController.m */,
+				FCA88F521ACB6A82006670A6 /* Images.xcassets */,
+				FCA88F4D1ACB6A82006670A6 /* Supporting Files */,
+			);
+			path = "Pootime WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		FCA88F4D1ACB6A82006670A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FCA88F4E1ACB6A82006670A6 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FCA88F5A1ACB6A82006670A6 /* Pootime WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				FCA88F5D1ACB6A82006670A6 /* Interface.storyboard */,
+				FCA88F601ACB6A82006670A6 /* Images.xcassets */,
+				FCA88F5B1ACB6A82006670A6 /* Supporting Files */,
+			);
+			path = "Pootime WatchKit App";
+			sourceTree = "<group>";
+		};
+		FCA88F5B1ACB6A82006670A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FCA88F5C1ACB6A82006670A6 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FCA88F1D1ACB6A5A006670A6 /* pOOO Time */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCA88F411ACB6A5A006670A6 /* Build configuration list for PBXNativeTarget "pOOO Time" */;
+			buildPhases = (
+				29B47A4B8C8D03B9396EA5E1 /* Check Pods Manifest.lock */,
+				FCA88F1A1ACB6A5A006670A6 /* Sources */,
+				FCA88F1B1ACB6A5A006670A6 /* Frameworks */,
+				FCA88F1C1ACB6A5A006670A6 /* Resources */,
+				FCA88F6B1ACB6A82006670A6 /* Embed App Extensions */,
+				256206A0B7E80446F9409FFD /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FCA88F631ACB6A82006670A6 /* PBXTargetDependency */,
+			);
+			name = "pOOO Time";
+			productName = Pootime;
+			productReference = FCA88F1E1ACB6A5A006670A6 /* pOOO Time.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FCA88F4A1ACB6A82006670A6 /* pOOO Time WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCA88F681ACB6A82006670A6 /* Build configuration list for PBXNativeTarget "pOOO Time WatchKit Extension" */;
+			buildPhases = (
+				6D73A032C5B12699CCF04CCE /* Check Pods Manifest.lock */,
+				FCA88F471ACB6A82006670A6 /* Sources */,
+				FCA88F481ACB6A82006670A6 /* Frameworks */,
+				FCA88F491ACB6A82006670A6 /* Resources */,
+				4A79C4E930AB902F544AEF83 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FCA88F591ACB6A82006670A6 /* PBXTargetDependency */,
+			);
+			name = "pOOO Time WatchKit Extension";
+			productName = "Pootime WatchKit Extension";
+			productReference = FCA88F4B1ACB6A82006670A6 /* pOOO Time WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		FCA88F551ACB6A82006670A6 /* pOOO Time WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCA88F651ACB6A82006670A6 /* Build configuration list for PBXNativeTarget "pOOO Time WatchKit App" */;
+			buildPhases = (
+				FCA88F541ACB6A82006670A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "pOOO Time WatchKit App";
+			productName = "Pootime WatchKit App";
+			productReference = FCA88F561ACB6A82006670A6 /* pOOO Time WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FCA88F161ACB6A5A006670A6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = PT;
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = Pixelbleed;
+				TargetAttributes = {
+					FCA88F1D1ACB6A5A006670A6 = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 5ES339A7SN;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					FCA88F4A1ACB6A82006670A6 = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 5ES339A7SN;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					FCA88F551ACB6A82006670A6 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+				};
+			};
+			buildConfigurationList = FCA88F191ACB6A5A006670A6 /* Build configuration list for PBXProject "Pootime" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FCA88F151ACB6A5A006670A6;
+			productRefGroup = FCA88F1F1ACB6A5A006670A6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FCA88F1D1ACB6A5A006670A6 /* pOOO Time */,
+				FCA88F4A1ACB6A82006670A6 /* pOOO Time WatchKit Extension */,
+				FCA88F551ACB6A82006670A6 /* pOOO Time WatchKit App */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FCA88F1C1ACB6A5A006670A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCA88F321ACB6A5A006670A6 /* LaunchScreen.xib in Resources */,
+				FCA88F2F1ACB6A5A006670A6 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCA88F491ACB6A82006670A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCA88F571ACB6A82006670A6 /* pOOO Time WatchKit App.app in Resources */,
+				FCA88F531ACB6A82006670A6 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCA88F541ACB6A82006670A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCA88F5F1ACB6A82006670A6 /* Interface.storyboard in Resources */,
+				FCA88F611ACB6A82006670A6 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		256206A0B7E80446F9409FFD /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		29B47A4B8C8D03B9396EA5E1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4A79C4E930AB902F544AEF83 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-pOOO Time WatchKit Extension/Pods-pOOO Time WatchKit Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D73A032C5B12699CCF04CCE /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FCA88F1A1ACB6A5A006670A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCA88F2A1ACB6A5A006670A6 /* PTViewController.m in Sources */,
+				FCA88F6F1ACB741E006670A6 /* PTBaseViewController.m in Sources */,
+				FCA88F721ACB7503006670A6 /* PTAnalytics.m in Sources */,
+				FCA88F781ACB7741006670A6 /* PTDefaultsManager.m in Sources */,
+				FCA88F271ACB6A5A006670A6 /* AppDelegate.m in Sources */,
+				FCA88F241ACB6A5A006670A6 /* main.m in Sources */,
+				FCA88F751ACB758A006670A6 /* PTTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCA88F471ACB6A82006670A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCA88F511ACB6A82006670A6 /* InterfaceController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FCA88F591ACB6A82006670A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FCA88F551ACB6A82006670A6 /* pOOO Time WatchKit App */;
+			targetProxy = FCA88F581ACB6A82006670A6 /* PBXContainerItemProxy */;
+		};
+		FCA88F631ACB6A82006670A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FCA88F4A1ACB6A82006670A6 /* pOOO Time WatchKit Extension */;
+			targetProxy = FCA88F621ACB6A82006670A6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FCA88F301ACB6A5A006670A6 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FCA88F311ACB6A5A006670A6 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		FCA88F5D1ACB6A82006670A6 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FCA88F5E1ACB6A82006670A6 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FCA88F3F1ACB6A5A006670A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FCA88F401ACB6A5A006670A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FCA88F421ACB6A5A006670A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC6A0D4F2E883F565ACB9FCE /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "pOOO Time.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = Pootime/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		FCA88F431ACB6A5A006670A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC6201BE3D2C892E743E75E7 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "pOOO Time.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = Pootime/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		FCA88F661ACB6A82006670A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IBSC_MODULE = Pootime_WatchKit_Extension;
+				INFOPLIST_FILE = "Pootime WatchKit App/Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		FCA88F671ACB6A82006670A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				IBSC_MODULE = Pootime_WatchKit_Extension;
+				INFOPLIST_FILE = "Pootime WatchKit App/Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
+		FCA88F691ACB6A82006670A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFBB99B4C14A67FAA5C9B376 /* Pods-pOOO Time WatchKit Extension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "pOOO Time WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Pootime WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FCA88F6A1ACB6A82006670A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EB0F6B98000178492BE4A4E /* Pods-pOOO Time WatchKit Extension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "pOOO Time WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "Pootime WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FCA88F191ACB6A5A006670A6 /* Build configuration list for PBXProject "Pootime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCA88F3F1ACB6A5A006670A6 /* Debug */,
+				FCA88F401ACB6A5A006670A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCA88F411ACB6A5A006670A6 /* Build configuration list for PBXNativeTarget "pOOO Time" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCA88F421ACB6A5A006670A6 /* Debug */,
+				FCA88F431ACB6A5A006670A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCA88F651ACB6A82006670A6 /* Build configuration list for PBXNativeTarget "pOOO Time WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCA88F661ACB6A82006670A6 /* Debug */,
+				FCA88F671ACB6A82006670A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCA88F681ACB6A82006670A6 /* Build configuration list for PBXNativeTarget "pOOO Time WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCA88F691ACB6A82006670A6 /* Debug */,
+				FCA88F6A1ACB6A82006670A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FCA88F161ACB6A5A006670A6 /* Project object */;
+}

@@ -1,0 +1,5 @@
+#include "Pods-pOOO Time WatchKit Extension-Bedrock.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/Bedrock" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Bedrock" "${PODS_ROOT}/Headers/Public/MMWormhole"
+OTHER_LDFLAGS = -ObjC
+PODS_ROOT = ${SRCROOT}
