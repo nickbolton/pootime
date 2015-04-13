@@ -83,7 +83,7 @@
 		FC99BDD11ADB3C1A00B5E85B /* UIView+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Utilities.m"; sourceTree = "<group>"; };
 		FC99BDD31ADB4A2800B5E85B /* PTMainFooterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMainFooterCell.h; sourceTree = "<group>"; };
 		FC99BDD41ADB4A2800B5E85B /* PTMainFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMainFooterCell.m; sourceTree = "<group>"; };
-		FCA88F1E1ACB6A5A006670A6 /* pOOO Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pOOO Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCA88F1E1ACB6A5A006670A6 /* PooTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PooTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA88F221ACB6A5A006670A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCA88F231ACB6A5A006670A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FCA88F251ACB6A5A006670A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 		FCA88F1F1ACB6A5A006670A6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FCA88F1E1ACB6A5A006670A6 /* pOOO Time.app */,
+				FCA88F1E1ACB6A5A006670A6 /* PooTime.app */,
 				FCA88F4B1ACB6A82006670A6 /* PooTime WatchKit Extension.appex */,
 				FCA88F561ACB6A82006670A6 /* PooTime WatchKit App.app */,
 			);
@@ -304,7 +304,7 @@
 			);
 			name = PooTime;
 			productName = Pootime;
-			productReference = FCA88F1E1ACB6A5A006670A6 /* pOOO Time.app */;
+			productReference = FCA88F1E1ACB6A5A006670A6 /* PooTime.app */;
 			productType = "com.apple.product-type.application";
 		};
 		FCA88F4A1ACB6A82006670A6 /* PooTime WatchKit Extension */ = {
@@ -652,12 +652,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "pOOO Time.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Pixelbleed LLC (5ES339A7SN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Pixelbleed LLC (5ES339A7SN)";
 				INFOPLIST_FILE = Pootime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "bb3619bc-2c47-41cd-93ba-e9f02eda0329";
 			};
 			name = Release;
 		};
