@@ -9,30 +9,30 @@
 /* Begin PBXBuildFile section */
 		19DBDD5A51B5B69B509EE251 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 901AD0C569E0DB2D2724CCA0 /* libPods.a */; };
 		D2CEB1B316DD68CAA288E014 /* libPods-pOOO Time WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E456CDE8DEBFCBD9ABBD8E94 /* libPods-pOOO Time WatchKit Extension.a */; };
-		FC99BDC91ADB372900B5E85B /* PTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC99BDC81ADB372900B5E85B /* PTMainViewController.m */; };
-		FC99BDCC1ADB38E100B5E85B /* PTDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = FC99BDCB1ADB38E100B5E85B /* PTDesign.m */; };
-		FC99BDCF1ADB3B5200B5E85B /* UIButton+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FC99BDCE1ADB3B5200B5E85B /* UIButton+Utilities.m */; };
-		FC99BDD21ADB3C1A00B5E85B /* UIView+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FC99BDD11ADB3C1A00B5E85B /* UIView+Utilities.m */; };
-		FC99BDD51ADB4A2800B5E85B /* PTMainFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC99BDD41ADB4A2800B5E85B /* PTMainFooterCell.m */; };
+		FC99BDF31ADBF18400B5E85B /* PTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC99BDEC1ADBF18400B5E85B /* PTBaseViewController.m */; };
+		FC99BDF41ADBF18400B5E85B /* PTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC99BDEE1ADBF18400B5E85B /* PTMainViewController.m */; };
+		FC99BDF51ADBF18400B5E85B /* PTSelectCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC99BDF01ADBF18400B5E85B /* PTSelectCalendarViewController.m */; };
+		FC99BDF61ADBF18400B5E85B /* PTTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC99BDF21ADBF18400B5E85B /* PTTableViewController.m */; };
+		FC99BDF91ADBF19200B5E85B /* PTMainFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC99BDF81ADBF19200B5E85B /* PTMainFooterCell.m */; };
+		FC99BE021ADBF19D00B5E85B /* PTAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = FC99BDFB1ADBF19D00B5E85B /* PTAnalytics.m */; };
+		FC99BE031ADBF19D00B5E85B /* PTCalendarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FC99BDFD1ADBF19D00B5E85B /* PTCalendarManager.m */; };
+		FC99BE041ADBF19D00B5E85B /* PTDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FC99BDFF1ADBF19D00B5E85B /* PTDefaultsManager.m */; };
+		FC99BE051ADBF19D00B5E85B /* PTDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = FC99BE011ADBF19D00B5E85B /* PTDesign.m */; };
+		FC99BE0A1ADBF1AA00B5E85B /* UIButton+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FC99BE071ADBF1AA00B5E85B /* UIButton+Utilities.m */; };
+		FC99BE0B1ADBF1AA00B5E85B /* UIView+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FC99BE091ADBF1AA00B5E85B /* UIView+Utilities.m */; };
+		FC99BE0C1ADBF1BA00B5E85B /* PTCalendarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FC99BDFD1ADBF19D00B5E85B /* PTCalendarManager.m */; };
 		FCA88F241ACB6A5A006670A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F231ACB6A5A006670A6 /* main.m */; };
 		FCA88F271ACB6A5A006670A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F261ACB6A5A006670A6 /* AppDelegate.m */; };
-		FCA88F2A1ACB6A5A006670A6 /* PTSelectCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F291ACB6A5A006670A6 /* PTSelectCalendarViewController.m */; };
 		FCA88F2F1ACB6A5A006670A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA88F2E1ACB6A5A006670A6 /* Images.xcassets */; };
 		FCA88F321ACB6A5A006670A6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCA88F301ACB6A5A006670A6 /* LaunchScreen.xib */; };
-		FCA88F511ACB6A82006670A6 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F501ACB6A82006670A6 /* InterfaceController.m */; };
+		FCA88F511ACB6A82006670A6 /* PTInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F501ACB6A82006670A6 /* PTInterfaceController.m */; };
 		FCA88F531ACB6A82006670A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA88F521ACB6A82006670A6 /* Images.xcassets */; };
-		FCA88F571ACB6A82006670A6 /* PooTime WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = FCA88F561ACB6A82006670A6 /* PooTime WatchKit App.app */; };
+		FCA88F571ACB6A82006670A6 /* Pootime WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = FCA88F561ACB6A82006670A6 /* Pootime WatchKit App.app */; };
 		FCA88F5F1ACB6A82006670A6 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA88F5D1ACB6A82006670A6 /* Interface.storyboard */; };
 		FCA88F611ACB6A82006670A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA88F601ACB6A82006670A6 /* Images.xcassets */; };
-		FCA88F641ACB6A82006670A6 /* PooTime WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FCA88F4B1ACB6A82006670A6 /* PooTime WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		FCA88F6F1ACB741E006670A6 /* PTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F6E1ACB741E006670A6 /* PTBaseViewController.m */; };
-		FCA88F721ACB7503006670A6 /* PTAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F711ACB7503006670A6 /* PTAnalytics.m */; };
-		FCA88F751ACB758A006670A6 /* PTTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F741ACB758A006670A6 /* PTTableViewController.m */; };
-		FCA88F781ACB7741006670A6 /* PTDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F771ACB7741006670A6 /* PTDefaultsManager.m */; };
+		FCA88F641ACB6A82006670A6 /* Pootime WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FCA88F4B1ACB6A82006670A6 /* Pootime WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FCA88F7C1ACC088A006670A6 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA88F7B1ACC088A006670A6 /* EventKit.framework */; };
 		FCA88F7D1ACC0897006670A6 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA88F7B1ACC088A006670A6 /* EventKit.framework */; };
-		FCA88F801ACC10A3006670A6 /* PTCalendarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F7F1ACC10A3006670A6 /* PTCalendarManager.m */; };
-		FCA88F811ACC117D006670A6 /* PTCalendarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA88F7F1ACC10A3006670A6 /* PTCalendarManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +59,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				FCA88F641ACB6A82006670A6 /* PooTime WatchKit Extension.appex in Embed App Extensions */,
+				FCA88F641ACB6A82006670A6 /* Pootime WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,49 +73,49 @@
 		DFBB99B4C14A67FAA5C9B376 /* Pods-pOOO Time WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pOOO Time WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pOOO Time WatchKit Extension/Pods-pOOO Time WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		E456CDE8DEBFCBD9ABBD8E94 /* libPods-pOOO Time WatchKit Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pOOO Time WatchKit Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6201BE3D2C892E743E75E7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		FC99BDC71ADB372900B5E85B /* PTMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMainViewController.h; sourceTree = "<group>"; };
-		FC99BDC81ADB372900B5E85B /* PTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMainViewController.m; sourceTree = "<group>"; };
-		FC99BDCA1ADB38E100B5E85B /* PTDesign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTDesign.h; sourceTree = "<group>"; };
-		FC99BDCB1ADB38E100B5E85B /* PTDesign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTDesign.m; sourceTree = "<group>"; };
-		FC99BDCD1ADB3B5200B5E85B /* UIButton+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Utilities.h"; sourceTree = "<group>"; };
-		FC99BDCE1ADB3B5200B5E85B /* UIButton+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Utilities.m"; sourceTree = "<group>"; };
-		FC99BDD01ADB3C1A00B5E85B /* UIView+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Utilities.h"; sourceTree = "<group>"; };
-		FC99BDD11ADB3C1A00B5E85B /* UIView+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Utilities.m"; sourceTree = "<group>"; };
-		FC99BDD31ADB4A2800B5E85B /* PTMainFooterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMainFooterCell.h; sourceTree = "<group>"; };
-		FC99BDD41ADB4A2800B5E85B /* PTMainFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMainFooterCell.m; sourceTree = "<group>"; };
-		FCA88F1E1ACB6A5A006670A6 /* PooTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PooTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC99BDEB1ADBF18400B5E85B /* PTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBaseViewController.h; sourceTree = "<group>"; };
+		FC99BDEC1ADBF18400B5E85B /* PTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTBaseViewController.m; sourceTree = "<group>"; };
+		FC99BDED1ADBF18400B5E85B /* PTMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMainViewController.h; sourceTree = "<group>"; };
+		FC99BDEE1ADBF18400B5E85B /* PTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMainViewController.m; sourceTree = "<group>"; };
+		FC99BDEF1ADBF18400B5E85B /* PTSelectCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSelectCalendarViewController.h; sourceTree = "<group>"; };
+		FC99BDF01ADBF18400B5E85B /* PTSelectCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTSelectCalendarViewController.m; sourceTree = "<group>"; };
+		FC99BDF11ADBF18400B5E85B /* PTTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTTableViewController.h; sourceTree = "<group>"; };
+		FC99BDF21ADBF18400B5E85B /* PTTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTTableViewController.m; sourceTree = "<group>"; };
+		FC99BDF71ADBF19200B5E85B /* PTMainFooterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMainFooterCell.h; sourceTree = "<group>"; };
+		FC99BDF81ADBF19200B5E85B /* PTMainFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMainFooterCell.m; sourceTree = "<group>"; };
+		FC99BDFA1ADBF19D00B5E85B /* PTAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTAnalytics.h; sourceTree = "<group>"; };
+		FC99BDFB1ADBF19D00B5E85B /* PTAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTAnalytics.m; sourceTree = "<group>"; };
+		FC99BDFC1ADBF19D00B5E85B /* PTCalendarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCalendarManager.h; sourceTree = "<group>"; };
+		FC99BDFD1ADBF19D00B5E85B /* PTCalendarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCalendarManager.m; sourceTree = "<group>"; };
+		FC99BDFE1ADBF19D00B5E85B /* PTDefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTDefaultsManager.h; sourceTree = "<group>"; };
+		FC99BDFF1ADBF19D00B5E85B /* PTDefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTDefaultsManager.m; sourceTree = "<group>"; };
+		FC99BE001ADBF19D00B5E85B /* PTDesign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTDesign.h; sourceTree = "<group>"; };
+		FC99BE011ADBF19D00B5E85B /* PTDesign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTDesign.m; sourceTree = "<group>"; };
+		FC99BE061ADBF1AA00B5E85B /* UIButton+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Utilities.h"; sourceTree = "<group>"; };
+		FC99BE071ADBF1AA00B5E85B /* UIButton+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Utilities.m"; sourceTree = "<group>"; };
+		FC99BE081ADBF1AA00B5E85B /* UIView+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Utilities.h"; sourceTree = "<group>"; };
+		FC99BE091ADBF1AA00B5E85B /* UIView+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Utilities.m"; sourceTree = "<group>"; };
+		FCA88F1E1ACB6A5A006670A6 /* Pootime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pootime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA88F221ACB6A5A006670A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCA88F231ACB6A5A006670A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FCA88F251ACB6A5A006670A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FCA88F261ACB6A5A006670A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FCA88F281ACB6A5A006670A6 /* PTSelectCalendarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTSelectCalendarViewController.h; sourceTree = "<group>"; };
-		FCA88F291ACB6A5A006670A6 /* PTSelectCalendarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTSelectCalendarViewController.m; sourceTree = "<group>"; };
 		FCA88F2E1ACB6A5A006670A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FCA88F311ACB6A5A006670A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		FCA88F3C1ACB6A5A006670A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCA88F3D1ACB6A5A006670A6 /* PootimeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PootimeTests.m; sourceTree = "<group>"; };
-		FCA88F4B1ACB6A82006670A6 /* PooTime WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "PooTime WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCA88F4B1ACB6A82006670A6 /* Pootime WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Pootime WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA88F4E1ACB6A82006670A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FCA88F4F1ACB6A82006670A6 /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
-		FCA88F501ACB6A82006670A6 /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		FCA88F4F1ACB6A82006670A6 /* PTInterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTInterfaceController.h; sourceTree = "<group>"; };
+		FCA88F501ACB6A82006670A6 /* PTInterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTInterfaceController.m; sourceTree = "<group>"; };
 		FCA88F521ACB6A82006670A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		FCA88F561ACB6A82006670A6 /* PooTime WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PooTime WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCA88F561ACB6A82006670A6 /* Pootime WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pootime WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA88F5C1ACB6A82006670A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCA88F5E1ACB6A82006670A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		FCA88F601ACB6A82006670A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		FCA88F6D1ACB741E006670A6 /* PTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBaseViewController.h; sourceTree = "<group>"; };
-		FCA88F6E1ACB741E006670A6 /* PTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTBaseViewController.m; sourceTree = "<group>"; };
-		FCA88F701ACB7503006670A6 /* PTAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTAnalytics.h; sourceTree = "<group>"; };
-		FCA88F711ACB7503006670A6 /* PTAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTAnalytics.m; sourceTree = "<group>"; };
-		FCA88F731ACB758A006670A6 /* PTTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTTableViewController.h; sourceTree = "<group>"; };
-		FCA88F741ACB758A006670A6 /* PTTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTTableViewController.m; sourceTree = "<group>"; };
-		FCA88F761ACB7741006670A6 /* PTDefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTDefaultsManager.h; sourceTree = "<group>"; };
-		FCA88F771ACB7741006670A6 /* PTDefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTDefaultsManager.m; sourceTree = "<group>"; };
-		FCA88F791ACB8348006670A6 /* pOOO Time.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "pOOO Time.entitlements"; sourceTree = "<group>"; };
-		FCA88F7A1ACB8806006670A6 /* pOOO Time WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "pOOO Time WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		FCA88F7B1ACC088A006670A6 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
-		FCA88F7E1ACC10A3006670A6 /* PTCalendarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCalendarManager.h; sourceTree = "<group>"; };
-		FCA88F7F1ACC10A3006670A6 /* PTCalendarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCalendarManager.m; sourceTree = "<group>"; };
+		FCDDC84F1ADBF42C00941CE9 /* Pootime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Pootime.entitlements; sourceTree = "<group>"; };
+		FCDDC8501ADBF43500941CE9 /* Pootime WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Pootime WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,11 +161,59 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FC99BDE71ADBF12900B5E85B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FC99BDEB1ADBF18400B5E85B /* PTBaseViewController.h */,
+				FC99BDEC1ADBF18400B5E85B /* PTBaseViewController.m */,
+				FC99BDED1ADBF18400B5E85B /* PTMainViewController.h */,
+				FC99BDEE1ADBF18400B5E85B /* PTMainViewController.m */,
+				FC99BDEF1ADBF18400B5E85B /* PTSelectCalendarViewController.h */,
+				FC99BDF01ADBF18400B5E85B /* PTSelectCalendarViewController.m */,
+				FC99BDF11ADBF18400B5E85B /* PTTableViewController.h */,
+				FC99BDF21ADBF18400B5E85B /* PTTableViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FC99BDE81ADBF12F00B5E85B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FC99BDF71ADBF19200B5E85B /* PTMainFooterCell.h */,
+				FC99BDF81ADBF19200B5E85B /* PTMainFooterCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FC99BDE91ADBF13600B5E85B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				FC99BE061ADBF1AA00B5E85B /* UIButton+Utilities.h */,
+				FC99BE071ADBF1AA00B5E85B /* UIButton+Utilities.m */,
+				FC99BE081ADBF1AA00B5E85B /* UIView+Utilities.h */,
+				FC99BE091ADBF1AA00B5E85B /* UIView+Utilities.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		FC99BDEA1ADBF14000B5E85B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FC99BDFA1ADBF19D00B5E85B /* PTAnalytics.h */,
+				FC99BDFB1ADBF19D00B5E85B /* PTAnalytics.m */,
+				FC99BDFC1ADBF19D00B5E85B /* PTCalendarManager.h */,
+				FC99BDFD1ADBF19D00B5E85B /* PTCalendarManager.m */,
+				FC99BDFE1ADBF19D00B5E85B /* PTDefaultsManager.h */,
+				FC99BDFF1ADBF19D00B5E85B /* PTDefaultsManager.m */,
+				FC99BE001ADBF19D00B5E85B /* PTDesign.h */,
+				FC99BE011ADBF19D00B5E85B /* PTDesign.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		FCA88F151ACB6A5A006670A6 = {
 			isa = PBXGroup;
 			children = (
-				FCA88F7A1ACB8806006670A6 /* pOOO Time WatchKit Extension.entitlements */,
-				FCA88F791ACB8348006670A6 /* pOOO Time.entitlements */,
 				FCA88F201ACB6A5A006670A6 /* Pootime */,
 				FCA88F3A1ACB6A5A006670A6 /* PootimeTests */,
 				FCA88F4C1ACB6A82006670A6 /* Pootime WatchKit Extension */,
@@ -179,9 +227,9 @@
 		FCA88F1F1ACB6A5A006670A6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FCA88F1E1ACB6A5A006670A6 /* PooTime.app */,
-				FCA88F4B1ACB6A82006670A6 /* PooTime WatchKit Extension.appex */,
-				FCA88F561ACB6A82006670A6 /* PooTime WatchKit App.app */,
+				FCA88F1E1ACB6A5A006670A6 /* Pootime.app */,
+				FCA88F4B1ACB6A82006670A6 /* Pootime WatchKit Extension.appex */,
+				FCA88F561ACB6A82006670A6 /* Pootime WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -189,32 +237,11 @@
 		FCA88F201ACB6A5A006670A6 /* Pootime */ = {
 			isa = PBXGroup;
 			children = (
-				FCA88F251ACB6A5A006670A6 /* AppDelegate.h */,
-				FCA88F261ACB6A5A006670A6 /* AppDelegate.m */,
-				FCA88F281ACB6A5A006670A6 /* PTSelectCalendarViewController.h */,
-				FCA88F291ACB6A5A006670A6 /* PTSelectCalendarViewController.m */,
-				FC99BDC71ADB372900B5E85B /* PTMainViewController.h */,
-				FC99BDC81ADB372900B5E85B /* PTMainViewController.m */,
-				FC99BDD31ADB4A2800B5E85B /* PTMainFooterCell.h */,
-				FC99BDD41ADB4A2800B5E85B /* PTMainFooterCell.m */,
-				FCA88F7E1ACC10A3006670A6 /* PTCalendarManager.h */,
-				FCA88F7F1ACC10A3006670A6 /* PTCalendarManager.m */,
-				FCA88F6D1ACB741E006670A6 /* PTBaseViewController.h */,
-				FCA88F6E1ACB741E006670A6 /* PTBaseViewController.m */,
-				FCA88F731ACB758A006670A6 /* PTTableViewController.h */,
-				FCA88F741ACB758A006670A6 /* PTTableViewController.m */,
-				FCA88F761ACB7741006670A6 /* PTDefaultsManager.h */,
-				FCA88F771ACB7741006670A6 /* PTDefaultsManager.m */,
-				FC99BDCA1ADB38E100B5E85B /* PTDesign.h */,
-				FC99BDCB1ADB38E100B5E85B /* PTDesign.m */,
-				FCA88F701ACB7503006670A6 /* PTAnalytics.h */,
-				FCA88F711ACB7503006670A6 /* PTAnalytics.m */,
-				FC99BDCD1ADB3B5200B5E85B /* UIButton+Utilities.h */,
-				FC99BDCE1ADB3B5200B5E85B /* UIButton+Utilities.m */,
-				FC99BDD01ADB3C1A00B5E85B /* UIView+Utilities.h */,
-				FC99BDD11ADB3C1A00B5E85B /* UIView+Utilities.m */,
-				FCA88F2E1ACB6A5A006670A6 /* Images.xcassets */,
-				FCA88F301ACB6A5A006670A6 /* LaunchScreen.xib */,
+				FCDDC84F1ADBF42C00941CE9 /* Pootime.entitlements */,
+				FC99BDE71ADBF12900B5E85B /* Controllers */,
+				FC99BDE81ADBF12F00B5E85B /* Views */,
+				FC99BDEA1ADBF14000B5E85B /* Utilities */,
+				FC99BDE91ADBF13600B5E85B /* Categories */,
 				FCA88F211ACB6A5A006670A6 /* Supporting Files */,
 			);
 			path = Pootime;
@@ -223,6 +250,10 @@
 		FCA88F211ACB6A5A006670A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FCA88F251ACB6A5A006670A6 /* AppDelegate.h */,
+				FCA88F261ACB6A5A006670A6 /* AppDelegate.m */,
+				FCA88F2E1ACB6A5A006670A6 /* Images.xcassets */,
+				FCA88F301ACB6A5A006670A6 /* LaunchScreen.xib */,
 				FCA88F221ACB6A5A006670A6 /* Info.plist */,
 				FCA88F231ACB6A5A006670A6 /* main.m */,
 			);
@@ -249,8 +280,9 @@
 		FCA88F4C1ACB6A82006670A6 /* Pootime WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				FCA88F4F1ACB6A82006670A6 /* InterfaceController.h */,
-				FCA88F501ACB6A82006670A6 /* InterfaceController.m */,
+				FCDDC8501ADBF43500941CE9 /* Pootime WatchKit Extension.entitlements */,
+				FCA88F4F1ACB6A82006670A6 /* PTInterfaceController.h */,
+				FCA88F501ACB6A82006670A6 /* PTInterfaceController.m */,
 				FCA88F521ACB6A82006670A6 /* Images.xcassets */,
 				FCA88F4D1ACB6A82006670A6 /* Supporting Files */,
 			);
@@ -286,9 +318,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FCA88F1D1ACB6A5A006670A6 /* PooTime */ = {
+		FCA88F1D1ACB6A5A006670A6 /* Pootime */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FCA88F411ACB6A5A006670A6 /* Build configuration list for PBXNativeTarget "PooTime" */;
+			buildConfigurationList = FCA88F411ACB6A5A006670A6 /* Build configuration list for PBXNativeTarget "Pootime" */;
 			buildPhases = (
 				29B47A4B8C8D03B9396EA5E1 /* Check Pods Manifest.lock */,
 				FCA88F1A1ACB6A5A006670A6 /* Sources */,
@@ -302,14 +334,14 @@
 			dependencies = (
 				FCA88F631ACB6A82006670A6 /* PBXTargetDependency */,
 			);
-			name = PooTime;
+			name = Pootime;
 			productName = Pootime;
-			productReference = FCA88F1E1ACB6A5A006670A6 /* PooTime.app */;
+			productReference = FCA88F1E1ACB6A5A006670A6 /* Pootime.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FCA88F4A1ACB6A82006670A6 /* PooTime WatchKit Extension */ = {
+		FCA88F4A1ACB6A82006670A6 /* Pootime WatchKit Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FCA88F681ACB6A82006670A6 /* Build configuration list for PBXNativeTarget "PooTime WatchKit Extension" */;
+			buildConfigurationList = FCA88F681ACB6A82006670A6 /* Build configuration list for PBXNativeTarget "Pootime WatchKit Extension" */;
 			buildPhases = (
 				6D73A032C5B12699CCF04CCE /* Check Pods Manifest.lock */,
 				FCA88F471ACB6A82006670A6 /* Sources */,
@@ -322,14 +354,14 @@
 			dependencies = (
 				FCA88F591ACB6A82006670A6 /* PBXTargetDependency */,
 			);
-			name = "PooTime WatchKit Extension";
+			name = "Pootime WatchKit Extension";
 			productName = "Pootime WatchKit Extension";
-			productReference = FCA88F4B1ACB6A82006670A6 /* PooTime WatchKit Extension.appex */;
+			productReference = FCA88F4B1ACB6A82006670A6 /* Pootime WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit-extension";
 		};
-		FCA88F551ACB6A82006670A6 /* PooTime WatchKit App */ = {
+		FCA88F551ACB6A82006670A6 /* Pootime WatchKit App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FCA88F651ACB6A82006670A6 /* Build configuration list for PBXNativeTarget "PooTime WatchKit App" */;
+			buildConfigurationList = FCA88F651ACB6A82006670A6 /* Build configuration list for PBXNativeTarget "Pootime WatchKit App" */;
 			buildPhases = (
 				FCA88F541ACB6A82006670A6 /* Resources */,
 			);
@@ -337,9 +369,9 @@
 			);
 			dependencies = (
 			);
-			name = "PooTime WatchKit App";
+			name = "Pootime WatchKit App";
 			productName = "Pootime WatchKit App";
-			productReference = FCA88F561ACB6A82006670A6 /* PooTime WatchKit App.app */;
+			productReference = FCA88F561ACB6A82006670A6 /* Pootime WatchKit App.app */;
 			productType = "com.apple.product-type.application.watchapp";
 		};
 /* End PBXNativeTarget section */
@@ -388,9 +420,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FCA88F1D1ACB6A5A006670A6 /* PooTime */,
-				FCA88F4A1ACB6A82006670A6 /* PooTime WatchKit Extension */,
-				FCA88F551ACB6A82006670A6 /* PooTime WatchKit App */,
+				FCA88F1D1ACB6A5A006670A6 /* Pootime */,
+				FCA88F4A1ACB6A82006670A6 /* Pootime WatchKit Extension */,
+				FCA88F551ACB6A82006670A6 /* Pootime WatchKit App */,
 			);
 		};
 /* End PBXProject section */
@@ -409,7 +441,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCA88F571ACB6A82006670A6 /* PooTime WatchKit App.app in Resources */,
+				FCA88F571ACB6A82006670A6 /* Pootime WatchKit App.app in Resources */,
 				FCA88F531ACB6A82006670A6 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,19 +525,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCA88F2A1ACB6A5A006670A6 /* PTSelectCalendarViewController.m in Sources */,
-				FC99BDD21ADB3C1A00B5E85B /* UIView+Utilities.m in Sources */,
-				FCA88F6F1ACB741E006670A6 /* PTBaseViewController.m in Sources */,
-				FCA88F721ACB7503006670A6 /* PTAnalytics.m in Sources */,
-				FCA88F781ACB7741006670A6 /* PTDefaultsManager.m in Sources */,
 				FCA88F271ACB6A5A006670A6 /* AppDelegate.m in Sources */,
+				FC99BE051ADBF19D00B5E85B /* PTDesign.m in Sources */,
+				FC99BDF41ADBF18400B5E85B /* PTMainViewController.m in Sources */,
+				FC99BE031ADBF19D00B5E85B /* PTCalendarManager.m in Sources */,
+				FC99BE041ADBF19D00B5E85B /* PTDefaultsManager.m in Sources */,
+				FC99BDF91ADBF19200B5E85B /* PTMainFooterCell.m in Sources */,
+				FC99BDF31ADBF18400B5E85B /* PTBaseViewController.m in Sources */,
+				FC99BE021ADBF19D00B5E85B /* PTAnalytics.m in Sources */,
+				FC99BE0B1ADBF1AA00B5E85B /* UIView+Utilities.m in Sources */,
+				FC99BE0A1ADBF1AA00B5E85B /* UIButton+Utilities.m in Sources */,
+				FC99BDF51ADBF18400B5E85B /* PTSelectCalendarViewController.m in Sources */,
 				FCA88F241ACB6A5A006670A6 /* main.m in Sources */,
-				FC99BDD51ADB4A2800B5E85B /* PTMainFooterCell.m in Sources */,
-				FC99BDCF1ADB3B5200B5E85B /* UIButton+Utilities.m in Sources */,
-				FC99BDC91ADB372900B5E85B /* PTMainViewController.m in Sources */,
-				FCA88F751ACB758A006670A6 /* PTTableViewController.m in Sources */,
-				FCA88F801ACC10A3006670A6 /* PTCalendarManager.m in Sources */,
-				FC99BDCC1ADB38E100B5E85B /* PTDesign.m in Sources */,
+				FC99BDF61ADBF18400B5E85B /* PTTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,8 +545,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCA88F511ACB6A82006670A6 /* InterfaceController.m in Sources */,
-				FCA88F811ACC117D006670A6 /* PTCalendarManager.m in Sources */,
+				FCA88F511ACB6A82006670A6 /* PTInterfaceController.m in Sources */,
+				FC99BE0C1ADBF1BA00B5E85B /* PTCalendarManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,12 +555,12 @@
 /* Begin PBXTargetDependency section */
 		FCA88F591ACB6A82006670A6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FCA88F551ACB6A82006670A6 /* PooTime WatchKit App */;
+			target = FCA88F551ACB6A82006670A6 /* Pootime WatchKit App */;
 			targetProxy = FCA88F581ACB6A82006670A6 /* PBXContainerItemProxy */;
 		};
 		FCA88F631ACB6A82006670A6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FCA88F4A1ACB6A82006670A6 /* PooTime WatchKit Extension */;
+			target = FCA88F4A1ACB6A82006670A6 /* Pootime WatchKit Extension */;
 			targetProxy = FCA88F621ACB6A82006670A6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -635,7 +667,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = "pOOO Time.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Pootime/Pootime.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Pootime/Info.plist;
@@ -651,7 +683,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = "pOOO Time.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Pootime/Pootime.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Pixelbleed LLC (5ES339A7SN)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Pixelbleed LLC (5ES339A7SN)";
 				INFOPLIST_FILE = Pootime/Info.plist;
@@ -695,7 +727,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DFBB99B4C14A67FAA5C9B376 /* Pods-pOOO Time WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "pOOO Time WatchKit Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Pootime WatchKit Extension/Pootime WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -714,7 +746,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1EB0F6B98000178492BE4A4E /* Pods-pOOO Time WatchKit Extension.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "pOOO Time WatchKit Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Pootime WatchKit Extension/Pootime WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Pootime WatchKit Extension/Info.plist";
@@ -737,7 +769,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FCA88F411ACB6A5A006670A6 /* Build configuration list for PBXNativeTarget "PooTime" */ = {
+		FCA88F411ACB6A5A006670A6 /* Build configuration list for PBXNativeTarget "Pootime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FCA88F421ACB6A5A006670A6 /* Debug */,
@@ -746,7 +778,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FCA88F651ACB6A82006670A6 /* Build configuration list for PBXNativeTarget "PooTime WatchKit App" */ = {
+		FCA88F651ACB6A82006670A6 /* Build configuration list for PBXNativeTarget "Pootime WatchKit App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FCA88F661ACB6A82006670A6 /* Debug */,
@@ -755,7 +787,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FCA88F681ACB6A82006670A6 /* Build configuration list for PBXNativeTarget "PooTime WatchKit Extension" */ = {
+		FCA88F681ACB6A82006670A6 /* Build configuration list for PBXNativeTarget "Pootime WatchKit Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FCA88F691ACB6A82006670A6 /* Debug */,

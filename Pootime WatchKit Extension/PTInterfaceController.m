@@ -1,17 +1,17 @@
 //
-//  InterfaceController.m
+//  PTInterfaceController.m
 //  Pootime WatchKit Extension
 //
 //  Created by Nick Bolton on 3/31/15.
 //  Copyright (c) 2015 Pixelbleed. All rights reserved.
 //
 
-#import "InterfaceController.h"
+#import "PTInterfaceController.h"
 #import "MMWormhole.h"
 #import "Bedrock.h"
 #import "PTCalendarManager.h"
 
-@interface InterfaceController()
+@interface PTInterfaceController()
 
 @property (nonatomic, strong) MMWormhole *wormhole;
 @property (nonatomic, strong) NSString *calendarID;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation InterfaceController
+@implementation PTInterfaceController
 
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
