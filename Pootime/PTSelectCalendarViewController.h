@@ -1,5 +1,5 @@
 //
-//  PTViewController.h
+//  PTSelectCalendarViewController.h
 //  Pootime
 //
 //  Created by Nick Bolton on 3/31/15.
@@ -8,7 +8,7 @@
 
 #import "PTTableViewController.h"
 
-@interface PTViewController : PTTableViewController
+@interface PTSelectCalendarViewController : PTTableViewController
 
 @end
 

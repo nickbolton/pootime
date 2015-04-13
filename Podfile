@@ -6,7 +6,7 @@ pod 'Bedrock/Core', :git => 'https://github.com/nickbolton/PBBedrock.git', :bran
 pod 'Bedrock/AutoLayout', :git => 'https://github.com/nickbolton/PBBedrock.git', :branch=>'master'
 pod 'MMWormhole', '~> 1.1'
 
-target 'pOOO Time WatchKit Extension' do
+target 'Pootime WatchKit Extension' do
     platform :ios, '8.2'
     pod 'MMWormhole', '~> 1.1'
     pod 'Bedrock/Core', :git => 'https://github.com/nickbolton/PBBedrock.git', :branch=>'master'

@@ -29,54 +29,99 @@
 }
 
 - (void)setupEventStore {
-    self.eventStore = [[EKEventStore alloc] init];
+    self.eventStore = [[EKEventStore alloc] init];    
 }
 
 #pragma mark - Getters and Setters
 
-- (NSArray *)calendarSections {
+- (void)calendarSections:(void(^)(NSArray *sections))completionBlock {
     
-    NSArray *allCalendars =
-    [self.eventStore calendarsForEntityType:EKEntityTypeEvent];
+    __weak typeof(self) this = self;
     
-    NSPredicate *predicate =
-    [NSPredicate
-     predicateWithFormat:@"type != %d", EKCalendarTypeBirthday];
-    
-    NSArray *filteredCalendars =
-    [allCalendars filteredArrayUsingPredicate:predicate];
-    
-    NSMutableDictionary *buckets = [NSMutableDictionary dictionary];
-    
-    for (EKCalendar *calendar in filteredCalendars) {
+    [self.eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
         
-        NSMutableArray *calendars = buckets[calendar.source.sourceIdentifier];
-        
-        if (calendars == nil) {
-            calendars = [NSMutableArray array];
-            buckets[calendar.source.sourceIdentifier] = calendars;
+        if (granted) {
+       
+            NSArray *allCalendars =
+            [this.eventStore calendarsForEntityType:EKEntityTypeEvent];
+            
+            NSPredicate *predicate =
+            [NSPredicate
+             predicateWithFormat:@"type != %d AND allowsContentModifications != 0 AND NOT title contains[c] %@ AND NOT title contains[c] %@",
+             EKCalendarTypeBirthday, @"birthday", @"holiday"];
+            
+            NSArray *filteredCalendars =
+            [allCalendars filteredArrayUsingPredicate:predicate];
+            
+            NSMutableDictionary *buckets = [NSMutableDictionary dictionary];
+            
+            for (EKCalendar *calendar in filteredCalendars) {
+                
+                NSMutableArray *calendars = buckets[calendar.source.sourceIdentifier];
+                
+                if (calendars == nil) {
+                    calendars = [NSMutableArray array];
+                    buckets[calendar.source.sourceIdentifier] = calendars;
+                }
+                
+                [calendars addObject:calendar];
+            }
+            
+            NSSortDescriptor *sorter =
+            [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+            
+            NSArray *sources = buckets.allKeys;
+            sources = [sources sortedArrayUsingDescriptors:@[sorter]];
+            
+            NSMutableArray *sections = [NSMutableArray array];
+            
+            for (NSString *sourceID in sources) {
+                
+                NSArray *calendars = buckets[sourceID];
+                calendars = [calendars sortedArrayUsingDescriptors:@[sorter]];
+                
+                [sections addObject:calendars];
+            }
+            
+            if (completionBlock != nil) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionBlock(sections);
+                });
+            }
         }
+    }];
+}
+
+- (void)allCalendars:(void(^)(NSArray *calendars))completionBlock {
+
+    __weak typeof(self) this = self;
+    
+    [self.eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
         
-        [calendars addObject:calendar];
-    }
-    
-    NSSortDescriptor *sorter =
-    [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
-    
-    NSArray *sources = buckets.allKeys;
-    sources = [sources sortedArrayUsingDescriptors:@[sorter]];
-    
-    NSMutableArray *sections = [NSMutableArray array];
-    
-    for (NSString *sourceID in sources) {
+        NSSortDescriptor *sorter =
+        [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
         
-        NSArray *calendars = buckets[sourceID];
-        calendars = [calendars sortedArrayUsingDescriptors:@[sorter]];
+        NSArray *allCalendars =
+        [this.eventStore calendarsForEntityType:EKEntityTypeEvent];
         
-        [sections addObject:calendars];
-    }
-    
-    return sections;
+        NSPredicate *predicate =
+        [NSPredicate
+         predicateWithFormat:@"type != %d AND allowsContentModifications != 0 AND NOT title contains[c] %@ AND NOT title contains[c] %@",
+         EKCalendarTypeBirthday, @"birthday", @"holiday"];
+        
+        NSArray *filteredCalendars =
+        [allCalendars filteredArrayUsingPredicate:predicate];
+        
+        filteredCalendars = [filteredCalendars sortedArrayUsingDescriptors:@[sorter]];
+        
+        if (completionBlock != nil) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionBlock(filteredCalendars);
+            });
+        }
+    }];
 }
 
 #pragma mark - Public
@@ -99,14 +144,40 @@
               eventIdentifier:eventIdentifier];
              
              if (completionBlock != nil) {
-                 completionBlock(newEventIdentifier);
+                 
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     completionBlock(newEventIdentifier);
+	                });
              }
              
          } else {
              
              if (completionBlock != nil) {
-                 completionBlock(nil);
+                 
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     completionBlock(nil);
+	                });
              }
+         }
+     }];
+}
+
+- (void)calendarWithID:(NSString *)calendarID
+            completion:(void(^)(EKCalendar *calendar))completionBlock {
+
+    __weak typeof(self) this = self;
+    
+    [self.eventStore
+     requestAccessToEntityType:EKEntityTypeEvent
+     completion:^(BOOL granted, NSError *error) {
+
+         EKCalendar *calendar = [this.eventStore calendarWithIdentifier:calendarID];
+         
+         if (completionBlock != nil) {
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 completionBlock(calendar);
+             });
          }
      }];
 }

@@ -8,13 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@class EKCalendar;
+
 @interface PTCalendarManager : NSObject
 
-@property (nonatomic, readonly) NSArray *calendarSections;
+- (void)calendarWithID:(NSString *)calendarID
+            completion:(void(^)(EKCalendar *calendar))completionBlock;
 
 - (void)markPooTimeWithCalendarID:(NSString *)calendarID
                   eventIdentifier:(NSString *)eventIdentifier
                        completion:(void(^)(NSString *eventIdentifier))completionBlock;
+
+- (void)allCalendars:(void(^)(NSArray *calendars))completionBlock;
+- (void)calendarSections:(void(^)(NSArray *sections))completionBlock;
 
 + (instancetype)sharedInstance;
 

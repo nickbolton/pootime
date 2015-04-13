@@ -7,14 +7,13 @@
 //
 
 #import "AppDelegate.h"
-#import "PTViewController.h"
+#import "PTMainViewController.h"
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
@@ -25,8 +24,17 @@
 - (void)setupWindow {
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [PTViewController new];
+    self.window.tintColor = [UIColor whiteColor];
+    
+    UINavigationController *navigationController =
+    [[UINavigationController alloc]
+     initWithRootViewController:[PTMainViewController new]];
+    
+    self.window.rootViewController = navigationController;
+    
     [self.window makeKeyAndVisible];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
 }
 
 @end
