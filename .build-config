@@ -1,7 +1,7 @@
 iosPath=.
 iosBinary=Pootime
 iosTarget=Pootime
-iosWorkspace=Pootime
+iosWorkspace=Pootime.xcworkspace
 iosScheme=Pootime
 iosInfoPath=Pootime/Info.plist
 iosHockeyAppID=2805a554c5955eb480d439b94288370a
