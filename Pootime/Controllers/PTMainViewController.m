@@ -14,6 +14,7 @@
 #import "MMWormhole.h"
 #import "PTMainFooterCell.h"
 #import "PTSelectCalendarViewController.h"
+#import "PTGlobalConstants.h"
 #import <EventKit/EventKit.h>
 
 static CGFloat const kPTMainViewControllerNavBarHeight = 64.0f;
@@ -189,11 +190,14 @@ static NSString * const kPTMainViewControllerFooterCellID = @"footer-cell";
 
     UILabel *view = [UILabel new];
     view.translatesAutoresizingMaskIntoConstraints = NO;
-    view.text = PBLoc(@"Put 15 minutes on your calendar.");
     view.textColor = [UIColor whiteColor];
     view.font = [UIFont systemFontOfSize:15.0f];
     view.numberOfLines = 0;
     view.textAlignment = NSTextAlignmentCenter;
+    view.text =
+    [NSString
+     stringWithFormat:PBLoc(@"Put %ld minutes on your calendar."),
+     kPTDefaultPooTimeInMinutes];
     
     [self.buttonTextContainer addSubview:view];
     
@@ -246,20 +250,25 @@ static NSString * const kPTMainViewControllerFooterCellID = @"footer-cell";
      optionalDirectory:@"wormhole"];
     
     // Obtain an initial message from the wormhole
-    NSString *eventID = [self.wormhole messageWithIdentifier:@"lastEventIdentifier"];
     
-    if (eventID != nil) {
-        [PTDefaultsManager sharedInstance].lastEventID = eventID;
+    NSDictionary *lastEvent = [self.wormhole messageWithIdentifier:kPTLastEventKey];
+    
+    if (lastEvent != nil) {
+        [PTDefaultsManager sharedInstance].lastEventID = lastEvent[kPTLastEventEventKey];
+        [PTDefaultsManager sharedInstance].lastCalendarID = lastEvent[kPTLastEventCalendarKey];
     }
     
-    NSLog(@"lastEventIdentifier: %@", eventID);
+    NSLog(@"lastEventIdentifier: %@", [PTDefaultsManager sharedInstance].lastEventID);
     
     [self.wormhole
-     listenForMessageWithIdentifier:@"lastEventIdentifier"
+     listenForMessageWithIdentifier:kPTLastEventKey
      listener:^(id messageObject) {
          
-         if (messageObject != nil) {
-             [PTDefaultsManager sharedInstance].lastEventID = messageObject;
+         NSDictionary *lastEvent = messageObject;
+         
+         if (lastEvent != nil) {
+             [PTDefaultsManager sharedInstance].lastEventID = lastEvent[kPTLastEventEventKey];
+             [PTDefaultsManager sharedInstance].lastCalendarID = lastEvent[kPTLastEventCalendarKey];
          }
          
          PBLog(@"lastEventIdentifier: %@", messageObject);
@@ -294,16 +303,24 @@ static NSString * const kPTMainViewControllerFooterCellID = @"footer-cell";
 
 - (void)buttonTapped {
     
+    __weak typeof(self) this = self;
+    
     [[PTCalendarManager sharedInstance]
      markPooTimeWithCalendarID:[PTDefaultsManager sharedInstance].selectedCalendarID
      eventIdentifier:[PTDefaultsManager sharedInstance].lastEventID
-     completion:^(NSString *eventIdentifier) {
+     completion:^(EKEvent *event) {
          
-         if (eventIdentifier != nil) {
+         if (event != nil) {
              
-             [self.wormhole
-              passMessageObject:eventIdentifier
-              identifier:@"lastEventIdentifier"];
+             NSDictionary *lastEvent =
+             @{
+               kPTLastEventCalendarKey : [PTDefaultsManager sharedInstance].selectedCalendarID,
+               kPTLastEventEventKey : event.eventIdentifier,
+               };
+             
+             [this.wormhole
+              passMessageObject:lastEvent
+              identifier:kPTLastEventKey];
          }
      }];
 }
@@ -347,7 +364,8 @@ static NSString * const kPTMainViewControllerFooterCellID = @"footer-cell";
             if (calendar != nil) {
                 
                 [PTDefaultsManager sharedInstance].selectedCalendarID = calendar.calendarIdentifier;
-                
+                [this.wormhole passMessageObject:calendar.calendarIdentifier identifier:kPTSelectedCalendarKey];
+
                 this.selectedCalendarName = calendar.title;
                 [this.footerTableView reloadData];
                 

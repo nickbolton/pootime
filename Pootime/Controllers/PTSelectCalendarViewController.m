@@ -13,6 +13,7 @@
 #import "MMWormhole.h"
 #import <EventKit/EventKit.h>
 #import "PTDesign.h"
+#import "PTGlobalConstants.h"
 
 static CGFloat const kPTSelectCalendarNavBarHeight = 64.0f;
 static CGFloat const kPTSelectCalendarSeparatorHeight = 1.0f;
@@ -109,20 +110,24 @@ static NSString * const kPTCalendarCellID = @"cell-id";
      optionalDirectory:@"wormhole"];
     
     // Obtain an initial message from the wormhole
-    NSString *eventID = [self.wormhole messageWithIdentifier:@"lastEventIdentifier"];
+    NSDictionary *lastEvent = [self.wormhole messageWithIdentifier:kPTLastEventKey];
     
-    if (eventID != nil) {
-        [PTDefaultsManager sharedInstance].lastEventID = eventID;
+    if (lastEvent != nil) {
+        [PTDefaultsManager sharedInstance].lastEventID = lastEvent[kPTLastEventEventKey];
+        [PTDefaultsManager sharedInstance].lastCalendarID = lastEvent[kPTLastEventCalendarKey];
     }
 
-    NSLog(@"lastEventIdentifier: %@", eventID);
+    NSLog(@"lastEventIdentifier: %@", [PTDefaultsManager sharedInstance].lastEventID);
     
     [self.wormhole
-     listenForMessageWithIdentifier:@"lastEventIdentifier"
+     listenForMessageWithIdentifier:kPTLastEventKey
      listener:^(id messageObject) {
          
-         if (messageObject != nil) {
-             [PTDefaultsManager sharedInstance].lastEventID = messageObject;
+         NSDictionary *lastEvent = messageObject;
+         
+         if (lastEvent != nil) {
+             [PTDefaultsManager sharedInstance].lastEventID = lastEvent[kPTLastEventEventKey];
+             [PTDefaultsManager sharedInstance].lastCalendarID = lastEvent[kPTLastEventCalendarKey];
          }
          
          PBLog(@"lastEventIdentifier: %@", messageObject);
@@ -201,7 +206,7 @@ static NSString * const kPTCalendarCellID = @"cell-id";
     
     if (calendar != nil) {
         [PTDefaultsManager sharedInstance].selectedCalendarID = calendar.calendarIdentifier;
-        [self.wormhole passMessageObject:calendar.calendarIdentifier identifier:@"calendarIdentifier"];
+        [self.wormhole passMessageObject:calendar.calendarIdentifier identifier:kPTSelectedCalendarKey];
         [self.tableView reloadData];
     }
 }

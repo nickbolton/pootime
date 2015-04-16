@@ -10,6 +10,7 @@
 #import <EventKit/EventKit.h>
 #import <UIKit/UIKit.h>
 #import "Bedrock.h"
+#import "PTGlobalConstants.h"
 
 @interface PTCalendarManager()
 
@@ -128,8 +129,8 @@
 
 - (void)markPooTimeWithCalendarID:(NSString *)calendarID
                   eventIdentifier:(NSString *)eventIdentifier
-                       completion:(void(^)(NSString *eventIdentifier))completionBlock {
-    
+                       completion:(void(^)(EKEvent *event))completionBlock {
+
     __weak typeof(self) this = self;
     
     [self.eventStore
@@ -138,7 +139,7 @@
 
          if (granted) {
              
-             NSString *newEventIdentifier =
+             EKEvent *newEvent =
              [this
               doMarkPooTimeWithCalendarID:calendarID
               eventIdentifier:eventIdentifier];
@@ -146,7 +147,7 @@
              if (completionBlock != nil) {
                  
                  dispatch_async(dispatch_get_main_queue(), ^{
-                     completionBlock(newEventIdentifier);
+                     completionBlock(newEvent);
 	                });
              }
              
@@ -182,12 +183,32 @@
      }];
 }
 
-- (NSString *)doMarkPooTimeWithCalendarID:(NSString *)calendarID
+- (void)eventWithID:(NSString *)eventID
+         completion:(void(^)(EKEvent *event))completionBlock {
+    
+    __weak typeof(self) this = self;
+    
+    [self.eventStore
+     requestAccessToEntityType:EKEntityTypeEvent
+     completion:^(BOOL granted, NSError *error) {
+         
+         EKEvent *event = [this.eventStore eventWithIdentifier:eventID];
+         
+         if (completionBlock != nil) {
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 completionBlock(event);
+             });
+         }
+     }];
+}
+
+- (EKEvent *)doMarkPooTimeWithCalendarID:(NSString *)calendarID
                           eventIdentifier:(NSString *)eventIdentifier {
 
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [NSDateComponents new];
-    components.minute = 15;
+    components.minute = kPTDefaultPooTimeInMinutes;
     
     NSDate *now = [NSDate date];
     NSDate *startTime = now;
@@ -212,14 +233,14 @@
                     PBLog(@"Error saving event: %@", error);
                 }
                 
-                return event.eventIdentifier;
+                return event;
             }
         }
     }
     
     EKEvent *event = [EKEvent eventWithEventStore:self.eventStore];
     event.availability = EKEventAvailabilityBusy;
-    event.title = @"pOOO Time";
+    event.title = @"\"Busy\"";
     event.calendar = calendar;
     event.startDate = startTime;
     event.endDate = endTime;
@@ -231,7 +252,36 @@
         PBLog(@"Error saving event: %@", error);
     }
     
-    return event.eventIdentifier;
+    return event;
+}
+
+- (void)cancelPooTimeWithCalendarID:(NSString *)calendarID
+                    eventIdentifier:(NSString *)eventIdentifier
+                         completion:(void(^)(void))completionBlock {
+
+    __weak typeof(self) this = self;
+    
+    [self.eventStore
+     requestAccessToEntityType:EKEntityTypeEvent
+     completion:^(BOOL granted, NSError *error) {
+         
+         if (eventIdentifier != nil) {
+             
+             EKEvent *event = [this.eventStore eventWithIdentifier:eventIdentifier];
+             
+             if (event != nil) {
+                 
+                 [this.eventStore removeEvent:event span:EKSpanThisEvent commit:YES error:&error];
+             }
+         }
+         
+         if (completionBlock != nil) {
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 completionBlock();
+             });
+         }
+     }];
 }
 
 #pragma mark - Singleton Methods

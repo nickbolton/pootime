@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSString *selectedCalendarID;
 @property (nonatomic, strong) NSString *lastEventID;
+@property (nonatomic, strong) NSString *lastCalendarID;
 
 + (instancetype)sharedInstance;
 - (void)registerDefaults;

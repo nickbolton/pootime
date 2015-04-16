@@ -10,15 +10,30 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="PTInterfaceController">
                     <items>
-                        <button width="1" height="1" alignment="left" title="pOOO Time" id="kUF-OW-O5J">
+                        <button alignment="center" id="lCE-Ge-2oT">
+                            <group key="contentGroup" width="110" height="110" alignment="left" id="qdl-WN-WMp"/>
                             <connections>
-                                <action selector="pootime:" destination="AgC-eL-Hgc" id="7VK-DH-AMg"/>
+                                <action selector="pootime:" destination="AgC-eL-Hgc" id="RFl-b5-Vr1"/>
+                            </connections>
+                        </button>
+                        <label width="0.90000000000000002" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" numberOfLines="0" id="YCk-a2-M0A">
+                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                        </label>
+                        <button alignment="center" verticalAlignment="center" hidden="YES" backgroundImage="cancel" id="Ldj-xT-Q7s">
+                            <connections>
+                                <action selector="cancel:" destination="AgC-eL-Hgc" id="Ero-Gh-a0r"/>
                             </connections>
                         </button>
                     </items>
+                    <connections>
+                        <outlet property="buttonGroup" destination="qdl-WN-WMp" id="bKp-id-5Og"/>
+                        <outlet property="cancelButton" destination="Ldj-xT-Q7s" id="9TT-RX-X4s"/>
+                        <outlet property="label" destination="YCk-a2-M0A" id="y1z-bK-Ym9"/>
+                        <outlet property="pooButton" destination="lCE-Ge-2oT" id="Bg4-sA-SSy"/>
+                    </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="331" y="366.75"/>
+            <point key="canvasLocation" x="331" y="366.5"/>
         </scene>
     </scenes>
 </document>

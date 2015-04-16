@@ -29,10 +29,14 @@
 		FCA88F531ACB6A82006670A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA88F521ACB6A82006670A6 /* Images.xcassets */; };
 		FCA88F571ACB6A82006670A6 /* Pootime WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = FCA88F561ACB6A82006670A6 /* Pootime WatchKit App.app */; };
 		FCA88F5F1ACB6A82006670A6 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA88F5D1ACB6A82006670A6 /* Interface.storyboard */; };
-		FCA88F611ACB6A82006670A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA88F601ACB6A82006670A6 /* Images.xcassets */; };
 		FCA88F641ACB6A82006670A6 /* Pootime WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FCA88F4B1ACB6A82006670A6 /* Pootime WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FCA88F7C1ACC088A006670A6 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA88F7B1ACC088A006670A6 /* EventKit.framework */; };
 		FCA88F7D1ACC0897006670A6 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA88F7B1ACC088A006670A6 /* EventKit.framework */; };
+		FCDDC8531ADBF50D00941CE9 /* PTEventRunningView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDDC8521ADBF50D00941CE9 /* PTEventRunningView.m */; };
+		FCDDC8541ADBF50D00941CE9 /* PTEventRunningView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDDC8521ADBF50D00941CE9 /* PTEventRunningView.m */; };
+		FCDDC8561ADD481700941CE9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCDDC8551ADD481700941CE9 /* Images.xcassets */; };
+		FCDDC8591ADD4C6500941CE9 /* PTGlobalConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDDC8581ADD4C6500941CE9 /* PTGlobalConstants.m */; };
+		FCDDC85A1ADD4C6500941CE9 /* PTGlobalConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDDC8581ADD4C6500941CE9 /* PTGlobalConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,10 +116,14 @@
 		FCA88F561ACB6A82006670A6 /* Pootime WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pootime WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA88F5C1ACB6A82006670A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCA88F5E1ACB6A82006670A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		FCA88F601ACB6A82006670A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FCA88F7B1ACC088A006670A6 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		FCDDC84F1ADBF42C00941CE9 /* Pootime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Pootime.entitlements; sourceTree = "<group>"; };
 		FCDDC8501ADBF43500941CE9 /* Pootime WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Pootime WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		FCDDC8511ADBF50D00941CE9 /* PTEventRunningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTEventRunningView.h; sourceTree = "<group>"; };
+		FCDDC8521ADBF50D00941CE9 /* PTEventRunningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTEventRunningView.m; sourceTree = "<group>"; };
+		FCDDC8551ADD481700941CE9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FCDDC8571ADD4C6500941CE9 /* PTGlobalConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTGlobalConstants.h; sourceTree = "<group>"; };
+		FCDDC8581ADD4C6500941CE9 /* PTGlobalConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTGlobalConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +189,8 @@
 			children = (
 				FC99BDF71ADBF19200B5E85B /* PTMainFooterCell.h */,
 				FC99BDF81ADBF19200B5E85B /* PTMainFooterCell.m */,
+				FCDDC8511ADBF50D00941CE9 /* PTEventRunningView.h */,
+				FCDDC8521ADBF50D00941CE9 /* PTEventRunningView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -207,6 +217,8 @@
 				FC99BDFF1ADBF19D00B5E85B /* PTDefaultsManager.m */,
 				FC99BE001ADBF19D00B5E85B /* PTDesign.h */,
 				FC99BE011ADBF19D00B5E85B /* PTDesign.m */,
+				FCDDC8571ADD4C6500941CE9 /* PTGlobalConstants.h */,
+				FCDDC8581ADD4C6500941CE9 /* PTGlobalConstants.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -301,7 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				FCA88F5D1ACB6A82006670A6 /* Interface.storyboard */,
-				FCA88F601ACB6A82006670A6 /* Images.xcassets */,
+				FCDDC8551ADD481700941CE9 /* Images.xcassets */,
 				FCA88F5B1ACB6A82006670A6 /* Supporting Files */,
 			);
 			path = "Pootime WatchKit App";
@@ -451,7 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCA88F5F1ACB6A82006670A6 /* Interface.storyboard in Resources */,
-				FCA88F611ACB6A82006670A6 /* Images.xcassets in Resources */,
+				FCDDC8561ADD481700941CE9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,10 +541,12 @@
 				FC99BE051ADBF19D00B5E85B /* PTDesign.m in Sources */,
 				FC99BDF41ADBF18400B5E85B /* PTMainViewController.m in Sources */,
 				FC99BE031ADBF19D00B5E85B /* PTCalendarManager.m in Sources */,
+				FCDDC8531ADBF50D00941CE9 /* PTEventRunningView.m in Sources */,
 				FC99BE041ADBF19D00B5E85B /* PTDefaultsManager.m in Sources */,
 				FC99BDF91ADBF19200B5E85B /* PTMainFooterCell.m in Sources */,
 				FC99BDF31ADBF18400B5E85B /* PTBaseViewController.m in Sources */,
 				FC99BE021ADBF19D00B5E85B /* PTAnalytics.m in Sources */,
+				FCDDC8591ADD4C6500941CE9 /* PTGlobalConstants.m in Sources */,
 				FC99BE0B1ADBF1AA00B5E85B /* UIView+Utilities.m in Sources */,
 				FC99BE0A1ADBF1AA00B5E85B /* UIButton+Utilities.m in Sources */,
 				FC99BDF51ADBF18400B5E85B /* PTSelectCalendarViewController.m in Sources */,
@@ -545,8 +559,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCDDC85A1ADD4C6500941CE9 /* PTGlobalConstants.m in Sources */,
 				FCA88F511ACB6A82006670A6 /* PTInterfaceController.m in Sources */,
 				FC99BE0C1ADBF1BA00B5E85B /* PTCalendarManager.m in Sources */,
+				FCDDC8541ADBF50D00941CE9 /* PTEventRunningView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

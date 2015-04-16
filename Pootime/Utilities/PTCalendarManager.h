@@ -9,15 +9,23 @@
 #import <Foundation/Foundation.h>
 
 @class EKCalendar;
+@class EKEvent;
 
 @interface PTCalendarManager : NSObject
 
 - (void)calendarWithID:(NSString *)calendarID
             completion:(void(^)(EKCalendar *calendar))completionBlock;
 
+- (void)eventWithID:(NSString *)eventID
+         completion:(void(^)(EKEvent *event))completionBlock;
+
 - (void)markPooTimeWithCalendarID:(NSString *)calendarID
                   eventIdentifier:(NSString *)eventIdentifier
-                       completion:(void(^)(NSString *eventIdentifier))completionBlock;
+                       completion:(void(^)(EKEvent *event))completionBlock;
+
+- (void)cancelPooTimeWithCalendarID:(NSString *)calendarID
+                    eventIdentifier:(NSString *)eventIdentifier
+                         completion:(void(^)(void))completionBlock;
 
 - (void)allCalendars:(void(^)(NSArray *calendars))completionBlock;
 - (void)calendarSections:(void(^)(NSArray *sections))completionBlock;
