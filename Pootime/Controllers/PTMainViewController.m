@@ -23,19 +23,26 @@ static CGFloat const kPTMainViewControllerSeparatorHeight = 1.0f;
 static CGFloat const kPTMainViewControllerSeparatorMargin = 20.0f;
 static CGFloat const kPTMainViewControllerButtonContainerSize = 252.0f;
 static NSString * const kPTMainViewControllerFooterCellID = @"footer-cell";
+static NSInteger const kPTPooImageCount = 37;
 
 @interface PTMainViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UIView *navigationBarSeparatorView;
+@property (nonatomic, strong) UIView *footerSeparatorView;
 @property (nonatomic, strong) UIView *contentContainer;
 @property (nonatomic, strong) UIView *buttonTextContainer;
 @property (nonatomic, strong) UIView *buttonContainer;
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIButton *button;
+@property (nonatomic, strong) UIImageView *pooImageView;
 @property (nonatomic, strong) UITableView *footerTableView;
 @property (nonatomic, strong) MMWormhole *wormhole;
 @property (nonatomic, strong) NSString *selectedCalendarName;
+@property (nonatomic, strong) UIButton *cancelButton;
+@property (nonatomic, strong) NSDate *endTime;
+@property (nonatomic, strong) NSTimer *eventTimer;
+@property (nonatomic, strong) NSDictionary *currentMessage;
 
 @end
 
@@ -119,7 +126,7 @@ static NSString * const kPTMainViewControllerFooterCellID = @"footer-cell";
     [NSLayoutConstraint alignToRight:view withPadding:-kPTMainViewControllerSeparatorMargin];
     [NSLayoutConstraint alignToBottom:view withPadding:0.0f];
     
-    self.navigationBarSeparatorView = view;
+    self.footerSeparatorView = view;
 }
 
 - (void)setupButtonTextContainer {
@@ -183,6 +190,62 @@ static NSString * const kPTMainViewControllerFooterCellID = @"footer-cell";
     self.button = view;
 }
 
+- (void)setupPooImageView {
+    
+    UIImageView *view = [UIImageView new];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    view.alpha = 0.0f;
+    
+    [self.buttonContainer addSubview:view];
+    
+    NSLayoutConstraint *widthConstraint =
+    [NSLayoutConstraint
+     constraintWithItem:view
+     attribute:NSLayoutAttributeWidth
+     relatedBy:NSLayoutRelationEqual
+     toItem:self.button
+     attribute:NSLayoutAttributeWidth
+     multiplier:1.0f
+     constant:0.0f];
+    
+    NSLayoutConstraint *heightConstraint =
+    [NSLayoutConstraint
+     constraintWithItem:view
+     attribute:NSLayoutAttributeHeight
+     relatedBy:NSLayoutRelationEqual
+     toItem:self.button
+     attribute:NSLayoutAttributeHeight
+     multiplier:1.0f
+     constant:0.0f];
+    
+    NSLayoutConstraint *xCenterConstraint =
+    [NSLayoutConstraint
+     constraintWithItem:view
+     attribute:NSLayoutAttributeCenterX
+     relatedBy:NSLayoutRelationEqual
+     toItem:self.button
+     attribute:NSLayoutAttributeCenterX
+     multiplier:1.0f
+     constant:0.0f];
+    
+    NSLayoutConstraint *yCenterConstraint =
+    [NSLayoutConstraint
+     constraintWithItem:view
+     attribute:NSLayoutAttributeCenterY
+     relatedBy:NSLayoutRelationEqual
+     toItem:self.button
+     attribute:NSLayoutAttributeCenterY
+     multiplier:1.0f
+     constant:0.0f];
+    
+    [view.superview addConstraint:widthConstraint];
+    [view.superview addConstraint:heightConstraint];
+    [view.superview addConstraint:xCenterConstraint];
+    [view.superview addConstraint:yCenterConstraint];
+    
+    self.pooImageView = view;
+}
+
 - (void)setupLabel {
     
     static CGFloat const bottomSpace = 7.5f;
@@ -216,6 +279,44 @@ static NSString * const kPTMainViewControllerFooterCellID = @"footer-cell";
     [NSLayoutConstraint alignToBottom:view withPadding:bottomSpace];
 
     self.label = view;
+}
+
+- (void)setupCancelButton {
+    
+    static CGFloat const topSpace = 28.0f;
+    
+    UIImage *image = [UIImage imageNamed:@"cancel"];
+    UIButton *view = [UIButton buttonWithType:UIButtonTypeCustom];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    view.alpha = 0.0f;
+    
+    [view setImage:image forState:UIControlStateNormal];
+    [view setImage:image forState:UIControlStateHighlighted];
+    
+    [view
+     addTarget:self
+     action:@selector(cancel:)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:view];
+    
+    [NSLayoutConstraint addWidthConstraint:image.size.width toView:view];
+    [NSLayoutConstraint addHeightConstraint:image.size.height toView:view];
+    [NSLayoutConstraint horizontallyCenterView:view];
+    
+    NSLayoutConstraint *topConstraint =
+    [NSLayoutConstraint
+     constraintWithItem:view
+     attribute:NSLayoutAttributeTop
+     relatedBy:NSLayoutRelationEqual
+     toItem:self.button
+     attribute:NSLayoutAttributeBottom
+     multiplier:1.0f
+     constant:topSpace];
+    
+    [view.superview addConstraint:topConstraint];
+    
+    self.cancelButton = view;
 }
 
 - (void)setupFooterTableView {
@@ -260,18 +361,24 @@ static NSString * const kPTMainViewControllerFooterCellID = @"footer-cell";
     
     NSLog(@"lastEventIdentifier: %@", [PTDefaultsManager sharedInstance].lastEventID);
     
+    __weak typeof(self) this = self;
+    
     [self.wormhole
      listenForMessageWithIdentifier:kPTLastEventKey
      listener:^(id messageObject) {
          
-         NSDictionary *lastEvent = messageObject;
-         
-         if (lastEvent != nil) {
-             [PTDefaultsManager sharedInstance].lastEventID = lastEvent[kPTLastEventEventKey];
-             [PTDefaultsManager sharedInstance].lastCalendarID = lastEvent[kPTLastEventCalendarKey];
+         if (this.currentMessage == nil || [this.currentMessage isEqualToDictionary:messageObject] == NO) {
+             NSDictionary *lastEvent = messageObject;
+             
+             if (lastEvent != nil) {
+                 [PTDefaultsManager sharedInstance].lastEventID = lastEvent[kPTLastEventEventKey];
+                 [PTDefaultsManager sharedInstance].lastCalendarID = lastEvent[kPTLastEventCalendarKey];
+             }
+             
+             [this checkForCurrentEvent];
+             
+             PBLog(@"lastEventIdentifier: %@", messageObject);
          }
-         
-         PBLog(@"lastEventIdentifier: %@", messageObject);
      }];
 }
 
@@ -289,7 +396,9 @@ static NSString * const kPTMainViewControllerFooterCellID = @"footer-cell";
     [self setupButtonTextContainer];
     [self setupButtonContainer];
     [self setupButton];
+    [self setupPooImageView];
     [self setupLabel];
+    [self setupCancelButton];
     [self setupFooterSeparator];
     [self setupFooterTableView];
 }
@@ -297,6 +406,7 @@ static NSString * const kPTMainViewControllerFooterCellID = @"footer-cell";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self updateSelectedCalendarName];
+    [self checkForCurrentEvent];
 }
 
 #pragma mark - Actions
@@ -304,6 +414,23 @@ static NSString * const kPTMainViewControllerFooterCellID = @"footer-cell";
 - (void)buttonTapped {
     
     __weak typeof(self) this = self;
+    
+    if (self.button.enabled == NO) {
+        return;
+    }
+    
+    if ([PTDefaultsManager sharedInstance].selectedCalendarID == nil) {
+        
+        NSString *message =
+        PBLoc(@"Please select a calendar.");
+        
+        [UIAlertView
+         presentOKAlertWithTitle:nil
+         andMessage:message];
+        return;
+    }
+    
+    self.button.enabled = NO;
     
     [[PTCalendarManager sharedInstance]
      markPooTimeWithCalendarID:[PTDefaultsManager sharedInstance].selectedCalendarID
@@ -318,10 +445,16 @@ static NSString * const kPTMainViewControllerFooterCellID = @"footer-cell";
                kPTLastEventEventKey : event.eventIdentifier,
                };
              
+             this.currentMessage = lastEvent;
+             
              [this.wormhole
               passMessageObject:lastEvent
               identifier:kPTLastEventKey];
+             
+             [this startPooTime:NO event:event];
          }
+         
+         this.button.enabled = YES;
      }];
 }
 
@@ -375,6 +508,175 @@ static NSString * const kPTMainViewControllerFooterCellID = @"footer-cell";
             }
         }];
     }
+}
+
+- (void)checkForCurrentEvent {
+    
+    __weak typeof(self) this = self;
+    
+    [[PTCalendarManager sharedInstance] eventWithID:[PTDefaultsManager sharedInstance].lastEventID completion:^(EKEvent *event) {
+        
+        if (event != nil) {
+            
+            NSDate *now = [NSDate date];
+            
+            if ([event.endDate isGreaterThan:now]) {
+                [this startPooTime:YES event:event];
+            } else {
+                
+                [this setDefaultUIState:YES];
+                [this cancel:nil];
+            }
+        }
+    }];
+}
+
+- (void)startPooTime:(BOOL)continuing event:(EKEvent *)event {
+    
+    NSDate *now = [NSDate date];
+    
+    if (event == nil || [event.endDate isLessThanOrEqualTo:now]) {
+        return;
+    }
+    
+    [UIView
+     animateWithDuration:.25f
+     animations:^{
+        
+         self.label.alpha = 0.0f;
+         self.cancelButton.alpha = 1.0f;
+         self.button.alpha = 0.0f;
+         self.pooImageView.alpha = 1.0f;
+         self.footerSeparatorView.alpha = 0.0f;
+         self.footerTableView.alpha = 0.0f;
+     }];
+    
+    NSDate *endDate = [event.endDate dateByAddingSeconds:-14.5*kPTSecondsPerMinute];
+    
+    self.endTime = endDate;
+    [self startWatchTimer];
+    
+    if (continuing) {
+        [self setCountdownState];
+        return;
+    }
+    
+    static NSTimeInterval const duration = .25f;
+    
+    NSArray *images = [self initialAnimationImages];
+    [self.pooImageView setAnimationImages:images];
+    self.pooImageView.animationDuration = .25f;
+    self.pooImageView.animationRepeatCount = 1;
+    [self.pooImageView startAnimating];
+    
+    __weak typeof(self) this = self;
+    
+    NSTimeInterval delayInSeconds = duration + .01f;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [this setCountdownState];
+    });
+}
+
+- (NSArray *)initialAnimationImages {
+    return [self animationImagesWithPrefix:@"poo-button-initial-animation" startIndex:0];
+}
+
+- (NSArray *)defaultAnimationImages:(NSInteger)startIndex {
+    return [self animationImagesWithPrefix:@"poo-button" startIndex:startIndex];
+}
+
+- (NSArray *)animationImagesWithPrefix:(NSString *)prefix startIndex:(NSInteger)startIndex {
+
+    NSMutableArray *result = [NSMutableArray array];
+    
+    for (NSInteger idx = startIndex; idx < kPTPooImageCount; idx++) {
+        
+        NSString *imageName = [NSString stringWithFormat:@"%@%ld", prefix, idx];
+        UIImage *image = [UIImage imageNamed:imageName];
+        [result addObject:image];
+    }
+    
+    return result;
+}
+
+- (void)setCountdownState {
+    
+    NSDate *now = [NSDate date];
+    NSTimeInterval remainingTime = [self.endTime timeIntervalSinceDate:now];
+    NSTimeInterval roundedRemainingMinutes = ceilf(remainingTime / kPTSecondsPerMinute);
+    
+    NSTimeInterval framesPerMinute = (float)kPTPooImageCount / kPTDefaultPooTimeInMinutes;
+    
+    NSInteger startIndex = roundedRemainingMinutes * framesPerMinute;
+    startIndex = MAX(0, startIndex);
+    
+    NSArray *images = [self defaultAnimationImages:startIndex];
+    [self.pooImageView setAnimationImages:images];
+    self.pooImageView.animationDuration = remainingTime;
+    self.pooImageView.animationRepeatCount = 1;
+    [self.pooImageView startAnimating];
+}
+
+- (IBAction)cancel:(id)sender {
+    
+    __weak typeof(self) this = self;
+    
+    self.cancelButton.enabled = NO;
+    
+    [self cancelWatchTimer];
+    [self.pooImageView stopAnimating];
+    
+    [[PTCalendarManager sharedInstance]
+     cancelPooTimeWithCalendarID:[PTDefaultsManager sharedInstance].lastCalendarID
+     eventIdentifier:[PTDefaultsManager sharedInstance].lastEventID
+     completion:^{
+         [this setDefaultUIState:YES];
+     }];
+}
+
+- (void)setDefaultUIState:(BOOL)animated {
+    
+    NSTimeInterval duration = animated ? .25f : 0.0f;
+    
+    [UIView
+     animateWithDuration:duration
+     animations:^{
+         
+         self.label.alpha = 1.0f;
+         self.cancelButton.alpha = 0.0f;
+         self.button.alpha = 1.0f;
+         self.pooImageView.alpha = 0.0f;
+         self.footerSeparatorView.alpha = 1.0f;
+         self.footerTableView.alpha = 1.0f;
+     }];
+}
+
+- (void)startWatchTimer {
+    
+    [self.eventTimer invalidate];
+
+    self.eventTimer =
+    [NSTimer
+     scheduledTimerWithTimeInterval:1.0f
+     target:self
+     selector:@selector(watchTimer:)
+     userInfo:nil
+     repeats:YES];
+}
+
+- (void)watchTimer:(NSTimer *)timer {
+    
+    NSDate *now = [NSDate date];
+    
+    if ([now isGreaterThanOrEqualTo:self.endTime]) {
+        [self cancel:nil];
+    }
+}
+
+- (void)cancelWatchTimer {
+    [self.eventTimer invalidate];
+    self.eventTimer = nil;
 }
 
 #pragma mark -

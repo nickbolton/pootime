@@ -198,6 +198,8 @@ static NSInteger const kPTPooImageCount = 37;
     NSTimeInterval framesPerMinute = (float)kPTPooImageCount / kPTDefaultPooTimeInMinutes;
     
     NSInteger startIndex = roundedRemainingMinutes * framesPerMinute;
+    startIndex = MAX(0, startIndex);
+
     NSInteger length = kPTPooImageCount - startIndex;
     NSRange range = NSMakeRange(startIndex, length);
 
@@ -259,6 +261,8 @@ static NSInteger const kPTPooImageCount = 37;
 #pragma mark - Private
 
 - (void)startWatchTimer {
+    
+    [self.eventTimer invalidate];
     
     self.eventTimer =
     [NSTimer
