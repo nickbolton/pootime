@@ -8,7 +8,7 @@
 
 #import "PTGlobalConstants.h"
 
-NSInteger const kPTDefaultPooTimeInMinutes = 15;
+NSInteger const kPTDefaultPooTimeInMinutes = 1; // 15
 NSString * const kPTSelectedCalendarKey = @"selectedCalendar";
 NSString * const kPTLastEventKey = @"lastEvent";
 NSString * const kPTLastEventEventKey = @"event";

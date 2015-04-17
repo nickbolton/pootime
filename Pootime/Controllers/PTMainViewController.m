@@ -43,6 +43,11 @@ static NSInteger const kPTPooImageCount = 37;
 @property (nonatomic, strong) NSDate *endTime;
 @property (nonatomic, strong) NSTimer *eventTimer;
 @property (nonatomic, strong) NSDictionary *currentMessage;
+@property (nonatomic) NSInteger currentAnimationFrame;
+@property (nonatomic, strong) NSArray *animationFrames;
+@property (nonatomic, strong) NSDate *initialAnimationStartTime;
+@property (nonatomic, strong) CADisplayLink *displayLink;
+@property (nonatomic) NSTimeInterval initialAnimationDuration;
 
 @end
 
@@ -382,11 +387,40 @@ static NSInteger const kPTPooImageCount = 37;
      }];
 }
 
+- (void)setupAnimationFrames {
+    
+    NSMutableArray *animationFrames = [NSMutableArray array];
+    
+    for (NSInteger idx = 0; idx < kPTPooImageCount; idx++) {
+        
+        NSString *imageName = [NSString stringWithFormat:@"poo-button-frame%ld", idx];
+        UIImage *image = [UIImage imageNamed:imageName];
+        [animationFrames addObject:image];
+    }
+    
+    self.animationFrames = animationFrames;
+}
+
+- (void)setupDisplayLink {
+    
+    self.displayLink =
+    [CADisplayLink
+     displayLinkWithTarget:self
+     selector:@selector(initialAnimationTimer)];
+    
+    [self.displayLink
+     addToRunLoop:[NSRunLoop mainRunLoop]
+     forMode:NSRunLoopCommonModes];
+    
+    self.displayLink.paused = YES;
+}
+
 #pragma mark - View Lifecycle
 
 - (void)viewDidLoad {
     self.selectedCalendarName = PBLoc(@"Not Shared");
     [super viewDidLoad];
+    [self setupAnimationFrames];
     [self setupWormhole];
     [self setupNavigationBar];
     [self setupTitleLabel];
@@ -401,6 +435,7 @@ static NSInteger const kPTPooImageCount = 37;
     [self setupCancelButton];
     [self setupFooterSeparator];
     [self setupFooterTableView];
+    [self setupDisplayLink];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -551,71 +586,47 @@ static NSInteger const kPTPooImageCount = 37;
          self.footerTableView.alpha = 0.0f;
      }];
     
-    NSDate *endDate = [event.endDate dateByAddingSeconds:-14.5*kPTSecondsPerMinute];
+    self.endTime = event.endDate;
     
-    self.endTime = endDate;
     [self startWatchTimer];
-    
+
     if (continuing) {
-        [self setCountdownState];
+        [self updateCurrentAnimationFrame];
         return;
     }
     
-    static NSTimeInterval const duration = .25f;
-    
-    NSArray *images = [self initialAnimationImages];
-    [self.pooImageView setAnimationImages:images];
-    self.pooImageView.animationDuration = .25f;
-    self.pooImageView.animationRepeatCount = 1;
-    [self.pooImageView startAnimating];
-    
-    __weak typeof(self) this = self;
-    
-    NSTimeInterval delayInSeconds = duration + .01f;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [this setCountdownState];
-    });
+    [self startInitialAnimationTimer];
 }
 
-- (NSArray *)initialAnimationImages {
-    return [self animationImagesWithPrefix:@"poo-button-initial-animation" startIndex:0];
-}
-
-- (NSArray *)defaultAnimationImages:(NSInteger)startIndex {
-    return [self animationImagesWithPrefix:@"poo-button" startIndex:startIndex];
-}
-
-- (NSArray *)animationImagesWithPrefix:(NSString *)prefix startIndex:(NSInteger)startIndex {
-
-    NSMutableArray *result = [NSMutableArray array];
-    
-    for (NSInteger idx = startIndex; idx < kPTPooImageCount; idx++) {
-        
-        NSString *imageName = [NSString stringWithFormat:@"%@%ld", prefix, idx];
-        UIImage *image = [UIImage imageNamed:imageName];
-        [result addObject:image];
-    }
-    
-    return result;
-}
-
-- (void)setCountdownState {
+- (NSInteger)animationFrameForRemainingTime {
     
     NSDate *now = [NSDate date];
     NSTimeInterval remainingTime = [self.endTime timeIntervalSinceDate:now];
-    NSTimeInterval roundedRemainingMinutes = ceilf(remainingTime / kPTSecondsPerMinute);
+    NSTimeInterval roundedRemainingTime = floor(remainingTime);
     
-    NSTimeInterval framesPerMinute = (float)kPTPooImageCount / kPTDefaultPooTimeInMinutes;
+    NSTimeInterval framesPerSecond = (float)kPTPooImageCount / (kPTDefaultPooTimeInMinutes*60.0f);
     
-    NSInteger startIndex = roundedRemainingMinutes * framesPerMinute;
-    startIndex = MAX(0, startIndex);
+    NSInteger frameIndex = roundedRemainingTime * framesPerSecond;
+    frameIndex = MAX(0, frameIndex);
+    frameIndex = MIN(kPTPooImageCount-1, frameIndex);
     
-    NSArray *images = [self defaultAnimationImages:startIndex];
-    [self.pooImageView setAnimationImages:images];
-    self.pooImageView.animationDuration = remainingTime;
-    self.pooImageView.animationRepeatCount = 1;
-    [self.pooImageView startAnimating];
+    return frameIndex;
+}
+
+- (NSInteger)animationFrameForInitialAnimationRemainingTime {
+    
+    NSDate *now = [NSDate date];
+    NSTimeInterval elapsedTime = [now timeIntervalSinceDate:self.initialAnimationStartTime];
+    NSTimeInterval remainingTime = self.initialAnimationDuration - elapsedTime;
+    
+    NSTimeInterval framesPerSecond = (float)kPTPooImageCount / self.initialAnimationDuration;
+    
+    NSInteger frameIndex = remainingTime * framesPerSecond;
+    
+    frameIndex = MAX(0, frameIndex);
+    frameIndex = MIN(kPTPooImageCount-1, frameIndex);
+    
+    return kPTPooImageCount - frameIndex - 1;
 }
 
 - (IBAction)cancel:(id)sender {
@@ -625,13 +636,16 @@ static NSInteger const kPTPooImageCount = 37;
     self.cancelButton.enabled = NO;
     
     [self cancelWatchTimer];
-    [self.pooImageView stopAnimating];
+    
+    UIImage *image = self.animationFrames[0];
+    self.pooImageView.image = image;
     
     [[PTCalendarManager sharedInstance]
      cancelPooTimeWithCalendarID:[PTDefaultsManager sharedInstance].lastCalendarID
      eventIdentifier:[PTDefaultsManager sharedInstance].lastEventID
      completion:^{
          [this setDefaultUIState:YES];
+         self.cancelButton.enabled = YES;
      }];
 }
 
@@ -655,7 +669,7 @@ static NSInteger const kPTPooImageCount = 37;
 - (void)startWatchTimer {
     
     [self.eventTimer invalidate];
-
+    
     self.eventTimer =
     [NSTimer
      scheduledTimerWithTimeInterval:1.0f
@@ -665,13 +679,49 @@ static NSInteger const kPTPooImageCount = 37;
      repeats:YES];
 }
 
+- (void)startInitialAnimationTimer {
+    
+    self.displayLink.paused = NO;
+    self.initialAnimationDuration = .5f;
+    self.initialAnimationStartTime = [NSDate date];
+}
+
+- (void)cancelInitialAnimationTimer {
+    self.displayLink.paused = YES;
+}
+
 - (void)watchTimer:(NSTimer *)timer {
     
-    NSDate *now = [NSDate date];
+    [self updateCurrentAnimationFrame];
     
-    if ([now isGreaterThanOrEqualTo:self.endTime]) {
+    if (self.currentAnimationFrame <= 0) {
         [self cancel:nil];
     }
+}
+
+- (void)initialAnimationTimer {
+    
+    [self updateCurrentInitialAnimationFrame];
+    
+    if (self.currentAnimationFrame >= kPTPooImageCount-1) {
+        [self cancelInitialAnimationTimer];
+    }
+}
+
+- (void)updateCurrentAnimationFrame {
+    
+    NSInteger frameIndex = [self animationFrameForRemainingTime];
+    UIImage *image = self.animationFrames[frameIndex];
+    self.currentAnimationFrame = frameIndex;
+    self.pooImageView.image = image;
+}
+
+- (void)updateCurrentInitialAnimationFrame {
+    
+    NSInteger frameIndex = [self animationFrameForInitialAnimationRemainingTime];
+    UIImage *image = self.animationFrames[frameIndex];
+    self.currentAnimationFrame = frameIndex;
+    self.pooImageView.image = image;
 }
 
 - (void)cancelWatchTimer {

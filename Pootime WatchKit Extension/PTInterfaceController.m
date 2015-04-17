@@ -29,6 +29,8 @@ static NSInteger const kPTPooImageCount = 37;
 @property (nonatomic, strong) NSTimer *eventTimer;
 @property (nonatomic, strong) NSDate *endTime;
 @property (nonatomic) BOOL khaiGuard;
+@property (nonatomic) NSInteger currentAnimationFrame;
+@property (nonatomic, strong) NSArray *animationFrames;
 
 @end
 
@@ -37,6 +39,7 @@ static NSInteger const kPTPooImageCount = 37;
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
     
+    [self setupAnimationFrames];
     [self setupViews];
     
     // Initialize the wormhole
@@ -103,13 +106,29 @@ static NSInteger const kPTPooImageCount = 37;
 
 #pragma mark - Setup
 
+- (void)setupAnimationFrames {
+
+    NSMutableArray *animationFrames = [NSMutableArray array];
+    
+    for (NSInteger idx = 0; idx < kPTPooImageCount; idx++) {
+        
+        NSString *imageName = [NSString stringWithFormat:@"poo-button-frame%ld", idx];
+        UIImage *image = [UIImage imageNamed:imageName];
+        [animationFrames addObject:image];
+    }
+    
+    self.animationFrames = animationFrames;
+}
+
 - (void)setupViews {
     [self setupButton];
     [self setupLabel];
 }
 
 - (void)setupButton {
-    [self.buttonGroup setBackgroundImageNamed:@"poo-button-initial-animation"];
+    
+    UIImage *image = self.animationFrames[0];
+    [self.buttonGroup setBackgroundImage:image];
 }
 
 - (void)setupLabel {
@@ -169,53 +188,37 @@ static NSInteger const kPTPooImageCount = 37;
     self.label.hidden = YES;
     self.cancelButton.hidden = NO;
     
-    NSDate *endDate = [event.endDate dateByAddingSeconds:-14.5*kPTSecondsPerMinute];
-    
-    self.endTime = endDate;
+    self.endTime = event.endDate;
     [self startWatchTimer];
 
     if (continuing) {
-        [self setCountdownState];
+        [self updateCurrentAnimationFrame];
         return;
     }
     
     NSRange range = NSMakeRange(0, kPTPooImageCount);
     
-    static NSTimeInterval const duration = .25f;
+    [self.buttonGroup setBackgroundImageNamed:@"poo-button-frame"];
     
     [self.buttonGroup
      startAnimatingWithImagesInRange:range
-     duration:.25f
+     duration:.5f
      repeatCount:1];
-    
-    __weak typeof(self) this = self;
-    
-    NSTimeInterval delayInSeconds = duration + .01f;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [this setCountdownState];
-    });
 }
 
-- (void)setCountdownState {
-
+- (NSInteger)animationFrameForRemainingTime {
+    
     NSDate *now = [NSDate date];
     NSTimeInterval remainingTime = [self.endTime timeIntervalSinceDate:now];
-    NSTimeInterval roundedRemainingMinutes = ceilf(remainingTime / kPTSecondsPerMinute);
+    NSTimeInterval roundedRemainingTime = floor(remainingTime);
     
-    NSTimeInterval framesPerMinute = (float)kPTPooImageCount / kPTDefaultPooTimeInMinutes;
+    NSTimeInterval framesPerSecond = (float)kPTPooImageCount / (kPTDefaultPooTimeInMinutes*60.0f);
     
-    NSInteger startIndex = roundedRemainingMinutes * framesPerMinute;
-    startIndex = MAX(0, startIndex);
-
-    NSInteger length = kPTPooImageCount - startIndex;
-    NSRange range = NSMakeRange(startIndex, length);
-
-    [self.buttonGroup setBackgroundImageNamed:@"poo-button"];
-    [self.buttonGroup
-     startAnimatingWithImagesInRange:range
-     duration:remainingTime
-     repeatCount:1];
+    NSInteger frameIndex = roundedRemainingTime * framesPerSecond;
+    frameIndex = MAX(0, frameIndex);
+    frameIndex = MIN(kPTPooImageCount-1, frameIndex);
+    
+    return frameIndex;
 }
 
 - (IBAction)cancel:(id)sender {
@@ -225,9 +228,9 @@ static NSInteger const kPTPooImageCount = 37;
     self.cancelButton.enabled = NO;
     
     [self cancelWatchTimer];
-    [self.buttonGroup stopAnimating];
-    [self.buttonGroup setBackgroundImageNamed:@"poo-button-initial-animation0"];
-    [self.buttonGroup setBackgroundImageNamed:@"poo-button-initial-animation"];
+    
+    UIImage *image = self.animationFrames[0];
+    [self.buttonGroup setBackgroundImage:image];
 
     [[PTCalendarManager sharedInstance]
      cancelPooTimeWithCalendarID:self.lastCalendarIdentifier
@@ -283,11 +286,19 @@ static NSInteger const kPTPooImageCount = 37;
 
 - (void)watchTimer:(NSTimer *)timer {
     
-    NSDate *now = [NSDate date];
-    
-    if ([now isGreaterThanOrEqualTo:self.endTime]) {
+    [self updateCurrentAnimationFrame];
+
+    if (self.currentAnimationFrame <= 0) {
         [self cancel:nil];
     }
+}
+
+- (void)updateCurrentAnimationFrame {
+    
+    NSInteger frameIndex = [self animationFrameForRemainingTime];
+    UIImage *image = self.animationFrames[frameIndex];
+    self.currentAnimationFrame = frameIndex;
+    [self.buttonGroup setBackgroundImage:image];
 }
 
 - (void)cancelWatchTimer {
