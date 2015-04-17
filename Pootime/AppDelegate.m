@@ -40,6 +40,9 @@ handleWatchKitExtensionRequest:(NSDictionary *)userInfo
          background_task = UIBackgroundTaskInvalid;
      }];
     
+    static NSString * const urlString = @"pootime://";
+    NSURL *launchURL = [NSURL URLWithString:urlString];
+    
     NSMutableDictionary *reply = [NSMutableDictionary dictionary];
     reply[@"poop"] = @"poop";
     
@@ -56,6 +59,10 @@ handleWatchKitExtensionRequest:(NSDictionary *)userInfo
              if (replyBlock != nil) {
                  replyBlock(reply);
              }
+             
+             [application openURL:launchURL];
+             [application endBackgroundTask: background_task];
+             background_task = UIBackgroundTaskInvalid;
          }];
         
     } else {
@@ -71,11 +78,16 @@ handleWatchKitExtensionRequest:(NSDictionary *)userInfo
             if (replyBlock != nil) {
                 replyBlock(reply);
             }
+            
+            [application openURL:launchURL];
+            [application endBackgroundTask: background_task];
+            background_task = UIBackgroundTaskInvalid;
         }];
     }
-    
-    [application endBackgroundTask: background_task];
-    background_task = UIBackgroundTaskInvalid;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return YES;
 }
 
 - (void)setupWindow {
