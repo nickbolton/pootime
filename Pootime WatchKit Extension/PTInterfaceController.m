@@ -87,6 +87,14 @@ static NSInteger const kPTPooImageCount = 37;
 - (void)willActivate {
     [super willActivate];
     [self checkForCurrentEvent];
+    
+    __weak typeof(self) this = self;
+    
+    [self.class
+     openParentApplication:@{}
+     reply:^(NSDictionary *replyInfo, NSError *error) {
+         this.calendarID = replyInfo[kPTSelectedCalendarKey];
+     }];
 }
 
 - (void)didDeactivate {
