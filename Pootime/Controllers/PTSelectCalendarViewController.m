@@ -117,7 +117,7 @@ static NSString * const kPTCalendarCellID = @"cell-id";
         [PTDefaultsManager sharedInstance].lastCalendarID = lastEvent[kPTLastEventCalendarKey];
     }
 
-    NSLog(@"lastEventIdentifier: %@", [PTDefaultsManager sharedInstance].lastEventID);
+    PBLog(@"lastEventIdentifier: %@", [PTDefaultsManager sharedInstance].lastEventID);
     
     [self.wormhole
      listenForMessageWithIdentifier:kPTLastEventKey

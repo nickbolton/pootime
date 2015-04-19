@@ -255,9 +255,8 @@
     return event;
 }
 
-- (void)cancelPooTimeWithCalendarID:(NSString *)calendarID
-                    eventIdentifier:(NSString *)eventIdentifier
-                         completion:(void(^)(void))completionBlock {
+- (void)cancelPooTimeWithEventIdentifier:(NSString *)eventIdentifier
+                              completion:(void(^)(void))completionBlock {
 
     __weak typeof(self) this = self;
     

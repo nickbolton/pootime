@@ -10,7 +10,6 @@
 #import "MMWormhole.h"
 #import "Bedrock.h"
 #import "PTCalendarManager.h"
-#import "PTEventRunningView.h"
 #import "PTGlobalConstants.h"
 #import <EventKit/EventKit.h>
 
@@ -52,13 +51,9 @@ static NSInteger const kPTPooImageCount = 37;
     self.calendarID = [self.wormhole messageWithIdentifier:kPTSelectedCalendarKey];
     
     NSDictionary *lastEvent = [self.wormhole messageWithIdentifier:kPTLastEventKey];
-
-    self.lastEventIdentifier = lastEvent[kPTLastEventEventKey];
-    self.lastCalendarIdentifier = lastEvent[kPTLastEventCalendarKey];
-
-    NSLog(@"calendarIdentifier: %@", self.calendarID);
-    NSLog(@"lastEventIdentifier: %@", self.lastEventIdentifier);
-    NSLog(@"lastCalendarIdentifier: %@", self.lastCalendarIdentifier);
+    [self handleReceivedEvent:lastEvent];
+    
+    PBLog(@"calendarIdentifier: %@", self.calendarID);
     
     // Listen for changes to the selection message. The selection message contains a string value
     // identified by the selectionString key. Note that the type of the key is included in the
@@ -77,13 +72,8 @@ static NSInteger const kPTPooImageCount = 37;
      listener:^(id messageObject) {
          
          NSDictionary *lastEvent = messageObject;
-         
-         this.lastEventIdentifier = lastEvent[kPTLastEventEventKey];
-         this.lastCalendarIdentifier = lastEvent[kPTLastEventCalendarKey];
+         [this handleReceivedEvent:lastEvent];
          [this checkForCurrentEvent];
-
-         PBLog(@"lastEventIdentifier: %@", this.lastEventIdentifier);
-         NSLog(@"lastCalendarIdentifier: %@", this.lastCalendarIdentifier);
      }];
 }
 
@@ -223,6 +213,16 @@ static NSInteger const kPTPooImageCount = 37;
 
 - (IBAction)cancel:(id)sender {
     
+    [self doCancel:self.lastEventIdentifier];
+    self.lastEventIdentifier = nil;
+    self.lastCalendarIdentifier = nil;
+    [self.wormhole
+     passMessageObject:nil
+     identifier:kPTLastEventKey];
+}
+
+- (void)doCancel:(NSString *)eventID {
+
     __weak typeof(self) this = self;
     
     self.cancelButton.enabled = NO;
@@ -233,8 +233,7 @@ static NSInteger const kPTPooImageCount = 37;
     [self.buttonGroup setBackgroundImage:image];
 
     [[PTCalendarManager sharedInstance]
-     cancelPooTimeWithCalendarID:self.lastCalendarIdentifier
-     eventIdentifier:self.lastEventIdentifier
+     cancelPooTimeWithEventIdentifier:eventID
      completion:^{
          [this setDefaultUIState];
      }];
@@ -270,6 +269,22 @@ static NSInteger const kPTPooImageCount = 37;
 }
 
 #pragma mark - Private
+
+- (void)handleReceivedEvent:(NSDictionary *)lastEvent {
+    
+    if (lastEvent != nil) {
+        self.lastEventIdentifier = lastEvent[kPTLastEventEventKey];
+        self.lastCalendarIdentifier = lastEvent[kPTLastEventCalendarKey];
+    } else {
+        
+        [self doCancel:self.lastEventIdentifier];
+        self.lastEventIdentifier = nil;
+        self.lastCalendarIdentifier = nil;
+    }
+    
+    PBLog(@"lastEventIdentifier: %@", self.lastEventIdentifier);
+    PBLog(@"lastCalendarIdentifier: %@", self.lastCalendarIdentifier);
+}
 
 - (void)startWatchTimer {
     

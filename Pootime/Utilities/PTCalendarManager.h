@@ -23,9 +23,8 @@
                   eventIdentifier:(NSString *)eventIdentifier
                        completion:(void(^)(EKEvent *event))completionBlock;
 
-- (void)cancelPooTimeWithCalendarID:(NSString *)calendarID
-                    eventIdentifier:(NSString *)eventIdentifier
-                         completion:(void(^)(void))completionBlock;
+- (void)cancelPooTimeWithEventIdentifier:(NSString *)eventIdentifier
+                              completion:(void(^)(void))completionBlock;
 
 - (void)allCalendars:(void(^)(NSArray *calendars))completionBlock;
 - (void)calendarSections:(void(^)(NSArray *sections))completionBlock;

@@ -362,9 +362,11 @@ static NSInteger const kPTPooImageCount = 37;
     if (lastEvent != nil) {
         [PTDefaultsManager sharedInstance].lastEventID = lastEvent[kPTLastEventEventKey];
         [PTDefaultsManager sharedInstance].lastCalendarID = lastEvent[kPTLastEventCalendarKey];
+    } else {
+        [self handleReceivedEvent:lastEvent];
     }
     
-    NSLog(@"lastEventIdentifier: %@", [PTDefaultsManager sharedInstance].lastEventID);
+    PBLog(@"lastEventIdentifier: %@", [PTDefaultsManager sharedInstance].lastEventID);
     
     __weak typeof(self) this = self;
     
@@ -375,11 +377,7 @@ static NSInteger const kPTPooImageCount = 37;
          if (this.currentMessage == nil || [this.currentMessage isEqualToDictionary:messageObject] == NO) {
              NSDictionary *lastEvent = messageObject;
              
-             if (lastEvent != nil) {
-                 [PTDefaultsManager sharedInstance].lastEventID = lastEvent[kPTLastEventEventKey];
-                 [PTDefaultsManager sharedInstance].lastCalendarID = lastEvent[kPTLastEventCalendarKey];
-             }
-             
+             [this handleReceivedEvent:lastEvent];
              [this checkForCurrentEvent];
              
              PBLog(@"lastEventIdentifier: %@", messageObject);
@@ -494,6 +492,19 @@ static NSInteger const kPTPooImageCount = 37;
 }
 
 #pragma mark - Private
+
+- (void)handleReceivedEvent:(NSDictionary *)lastEvent {
+    
+    if (lastEvent != nil) {
+        [PTDefaultsManager sharedInstance].lastEventID = lastEvent[kPTLastEventEventKey];
+        [PTDefaultsManager sharedInstance].lastCalendarID = lastEvent[kPTLastEventCalendarKey];
+    } else {
+        
+        [self doCancel:[PTDefaultsManager sharedInstance].lastEventID];
+        [PTDefaultsManager sharedInstance].lastEventID = nil;
+        [PTDefaultsManager sharedInstance].lastCalendarID = nil;
+    }
+}
 
 - (void)presentSelectCalendarViewController {
 
@@ -631,6 +642,16 @@ static NSInteger const kPTPooImageCount = 37;
 
 - (IBAction)cancel:(id)sender {
     
+    [self doCancel:[PTDefaultsManager sharedInstance].lastEventID];
+    [PTDefaultsManager sharedInstance].lastEventID = nil;
+    [PTDefaultsManager sharedInstance].lastCalendarID = nil;
+    [self.wormhole
+     passMessageObject:nil
+     identifier:kPTLastEventKey];
+}
+
+- (void)doCancel:(NSString *)eventID {
+    
     __weak typeof(self) this = self;
     
     self.cancelButton.enabled = NO;
@@ -641,8 +662,7 @@ static NSInteger const kPTPooImageCount = 37;
     self.pooImageView.image = image;
     
     [[PTCalendarManager sharedInstance]
-     cancelPooTimeWithCalendarID:[PTDefaultsManager sharedInstance].lastCalendarID
-     eventIdentifier:[PTDefaultsManager sharedInstance].lastEventID
+     cancelPooTimeWithEventIdentifier:eventID
      completion:^{
          [this setDefaultUIState:YES];
          self.cancelButton.enabled = YES;
