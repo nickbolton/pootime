@@ -180,6 +180,9 @@ static NSInteger const kPTPooImageCount = 37;
     view.titleLabel.font = [UIFont systemFontOfSize:121.0f];
     [view setTitle:@"💩" forState:UIControlStateNormal];
     
+    UIEdgeInsets insets = UIEdgeInsetsMake(-1.0f, -1.0f, 1.0f, 1.0f);
+    view.titleEdgeInsets = insets;
+    
     [view
      addTarget:self
      action:@selector(buttonTapped)
@@ -197,11 +200,13 @@ static NSInteger const kPTPooImageCount = 37;
 
 - (void)setupPooImageView {
     
+    static CGFloat const sizeOffset = 35.0f;
+    
     UIImageView *view = [UIImageView new];
     view.translatesAutoresizingMaskIntoConstraints = NO;
     view.alpha = 0.0f;
     
-    [self.buttonContainer addSubview:view];
+    [self.buttonTextContainer addSubview:view];
     
     NSLayoutConstraint *widthConstraint =
     [NSLayoutConstraint
@@ -211,7 +216,7 @@ static NSInteger const kPTPooImageCount = 37;
      toItem:self.button
      attribute:NSLayoutAttributeWidth
      multiplier:1.0f
-     constant:0.0f];
+     constant:sizeOffset];
     
     NSLayoutConstraint *heightConstraint =
     [NSLayoutConstraint
@@ -221,14 +226,14 @@ static NSInteger const kPTPooImageCount = 37;
      toItem:self.button
      attribute:NSLayoutAttributeHeight
      multiplier:1.0f
-     constant:0.0f];
+     constant:sizeOffset];
     
     NSLayoutConstraint *xCenterConstraint =
     [NSLayoutConstraint
      constraintWithItem:view
      attribute:NSLayoutAttributeCenterX
      relatedBy:NSLayoutRelationEqual
-     toItem:self.button
+     toItem:self.buttonContainer
      attribute:NSLayoutAttributeCenterX
      multiplier:1.0f
      constant:0.0f];
@@ -238,7 +243,7 @@ static NSInteger const kPTPooImageCount = 37;
      constraintWithItem:view
      attribute:NSLayoutAttributeCenterY
      relatedBy:NSLayoutRelationEqual
-     toItem:self.button
+     toItem:self.buttonContainer
      attribute:NSLayoutAttributeCenterY
      multiplier:1.0f
      constant:0.0f];
