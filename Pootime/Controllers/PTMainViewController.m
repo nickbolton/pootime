@@ -485,6 +485,9 @@ static NSInteger const kPTPooImageCount = 37;
              
              this.currentMessage = lastEvent;
              
+             [PTDefaultsManager sharedInstance].lastEventID = event.eventIdentifier;
+             [PTDefaultsManager sharedInstance].lastCalendarID = event.calendar.calendarIdentifier;
+
              [this.wormhole
               passMessageObject:lastEvent
               identifier:kPTLastEventKey];
@@ -505,7 +508,7 @@ static NSInteger const kPTPooImageCount = 37;
         [PTDefaultsManager sharedInstance].lastCalendarID = lastEvent[kPTLastEventCalendarKey];
     } else {
         
-        [self doCancel:[PTDefaultsManager sharedInstance].lastEventID];
+        [self doCancel:[PTDefaultsManager sharedInstance].lastEventID cancelPressed:NO];
         [PTDefaultsManager sharedInstance].lastEventID = nil;
         [PTDefaultsManager sharedInstance].lastCalendarID = nil;
     }
@@ -589,7 +592,7 @@ static NSInteger const kPTPooImageCount = 37;
     if (event == nil || [event.endDate isLessThanOrEqualTo:now]) {
         return;
     }
-    
+
     [UIView
      animateWithDuration:.25f
      animations:^{
@@ -646,8 +649,12 @@ static NSInteger const kPTPooImageCount = 37;
 }
 
 - (IBAction)cancel:(id)sender {
+    [self cancelPooTime:YES];
+}
+
+- (void)cancelPooTime:(BOOL)cancelPressed {
     
-    [self doCancel:[PTDefaultsManager sharedInstance].lastEventID];
+    [self doCancel:[PTDefaultsManager sharedInstance].lastEventID cancelPressed:cancelPressed];
     [PTDefaultsManager sharedInstance].lastEventID = nil;
     [PTDefaultsManager sharedInstance].lastCalendarID = nil;
     [self.wormhole
@@ -655,7 +662,7 @@ static NSInteger const kPTPooImageCount = 37;
      identifier:kPTLastEventKey];
 }
 
-- (void)doCancel:(NSString *)eventID {
+- (void)doCancel:(NSString *)eventID cancelPressed:(BOOL)cancelPressed {
     
     __weak typeof(self) this = self;
     
@@ -666,12 +673,23 @@ static NSInteger const kPTPooImageCount = 37;
     UIImage *image = self.animationFrames[0];
     self.pooImageView.image = image;
     
-    [[PTCalendarManager sharedInstance]
-     cancelPooTimeWithEventIdentifier:eventID
-     completion:^{
-         [this setDefaultUIState:YES];
-         self.cancelButton.enabled = YES;
-     }];
+    if (cancelPressed) {
+        
+        [[PTCalendarManager sharedInstance]
+         cancelPooTimeWithEventIdentifier:eventID
+         completion:^{
+             [this finishCancelAction];
+         }];
+        
+    } else {
+        
+        [self finishCancelAction];
+    }
+}
+
+- (void)finishCancelAction {
+    [self setDefaultUIState:YES];
+    self.cancelButton.enabled = YES;
 }
 
 - (void)setDefaultUIState:(BOOL)animated {
@@ -720,7 +738,7 @@ static NSInteger const kPTPooImageCount = 37;
     [self updateCurrentAnimationFrame];
     
     if (self.currentAnimationFrame <= 0) {
-        [self cancel:nil];
+        [self cancelPooTime:NO];
     }
 }
 
