@@ -30,6 +30,7 @@ static NSInteger const kPTPooImageCount = 37;
 @property (nonatomic) BOOL khaiGuard;
 @property (nonatomic) NSInteger currentAnimationFrame;
 @property (nonatomic, strong) NSArray *animationFrames;
+@property (nonatomic) BOOL initialAnimationRunning;
 
 @end
 
@@ -102,7 +103,7 @@ static NSInteger const kPTPooImageCount = 37;
     
     for (NSInteger idx = 0; idx < kPTPooImageCount; idx++) {
         
-        NSString *imageName = [NSString stringWithFormat:@"poo-button-frame%ld", idx];
+        NSString *imageName = [NSString stringWithFormat:@"poo-button-watch-frame%ld", idx];
         UIImage *image = [UIImage imageNamed:imageName];
         [animationFrames addObject:image];
     }
@@ -171,7 +172,7 @@ static NSInteger const kPTPooImageCount = 37;
     
     NSDate *now = [NSDate date];
 
-    if (event == nil || [event.endDate isLessThanOrEqualTo:now]) {
+    if (self.initialAnimationRunning || event == nil || [event.endDate isLessThanOrEqualTo:now]) {
         return;
     }
     
@@ -182,13 +183,18 @@ static NSInteger const kPTPooImageCount = 37;
     [self startWatchTimer];
 
     if (continuing) {
-        [self updateCurrentAnimationFrame];
+        
+        if (self.initialAnimationRunning == NO) {
+            [self updateCurrentAnimationFrame];
+        }
         return;
     }
+   
+    self.initialAnimationRunning = YES;
     
     NSRange range = NSMakeRange(0, kPTPooImageCount);
     
-    [self.buttonGroup setBackgroundImageNamed:@"poo-button-frame"];
+    [self.buttonGroup setBackgroundImageNamed:@"poo-button-watch-frame"];
     
     [self.buttonGroup
      startAnimatingWithImagesInRange:range
@@ -311,6 +317,8 @@ static NSInteger const kPTPooImageCount = 37;
 }
 
 - (void)watchTimer:(NSTimer *)timer {
+    
+    self.initialAnimationRunning = NO;
     
     [self updateCurrentAnimationFrame];
 

@@ -13,6 +13,7 @@ NSString * const kPTSelectedCalendarKey = @"selectedCalendar";
 NSString * const kPTLastEventKey = @"lastEvent";
 NSString * const kPTLastEventEventKey = @"event";
 NSString * const kPTLastEventCalendarKey = @"calendar";
+NSString * const kPTLastEventDeviceIDKey = @"deviceID";
 NSTimeInterval const kPTSecondsPerMinute = 60.0f;
 
 @implementation PTGlobalConstants
