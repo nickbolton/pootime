@@ -8,6 +8,7 @@
 
 #import "PTAnalytics.h"
 #import "Bedrock.h"
+#import <FlurrySDK/Flurry.h>
 
 @implementation PTAnalytics
 
@@ -15,7 +16,7 @@
 #if DEBUG
     PBLog(@"%@ - %@", NSStringFromClass(self), eventName);
 #endif
-//    [Flurry logEvent:eventName];
+    [Flurry logEvent:eventName];
 }
 
 + (void)logEvent:(NSString *)eventName
@@ -23,7 +24,7 @@
 #if DEBUG
     PBLog(@"%@ - %@", NSStringFromClass(self), eventName);
 #endif
-//    [Flurry logEvent:eventName withParameters:parameters];
+    [Flurry logEvent:eventName withParameters:parameters];
 }
 
 @end

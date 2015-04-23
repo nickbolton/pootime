@@ -14,6 +14,7 @@
 #import <EventKit/EventKit.h>
 #import "PTDesign.h"
 #import "PTGlobalConstants.h"
+#import "PTAnalytics.h"
 
 static CGFloat const kPTSelectCalendarNavBarHeight = 64.0f;
 static CGFloat const kPTSelectCalendarSeparatorHeight = 1.0f;

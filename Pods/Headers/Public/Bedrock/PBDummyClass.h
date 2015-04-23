@@ -1,1 +1,1 @@
-../../../Bedrock/Shared/Utilities/PBDummyClass.h
+@interface PBDummyClass : NSObject {} @end

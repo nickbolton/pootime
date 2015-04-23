@@ -16,6 +16,7 @@
 #import "PTSelectCalendarViewController.h"
 #import "PTGlobalConstants.h"
 #import <EventKit/EventKit.h>
+#import "PTAnalytics.h"
 
 static CGFloat const kPTMainViewControllerNavBarHeight = 64.0f;
 static CGFloat const kPTMainViewControllerFooterHeight = 64.0f;
@@ -496,6 +497,13 @@ static NSInteger const kPTPooImageCount = 37;
          }
          
          this.button.enabled = YES;
+         
+         NSDictionary *parameters =
+         @{@"timestamp" : [NSDate date],
+           @"calendar" : [NSString safeString:event.calendar.title],
+               };
+         
+         [PTAnalytics logEvent:@"event-start" withParameters:parameters];
      }];
 }
 
@@ -650,6 +658,7 @@ static NSInteger const kPTPooImageCount = 37;
 
 - (IBAction)cancel:(id)sender {
     [self cancelPooTime:YES];
+    [PTAnalytics logEvent:@"event-cancelled"];
 }
 
 - (void)cancelPooTime:(BOOL)cancelPressed {

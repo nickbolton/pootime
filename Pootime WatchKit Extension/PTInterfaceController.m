@@ -12,6 +12,7 @@
 #import "PTCalendarManager.h"
 #import "PTGlobalConstants.h"
 #import <EventKit/EventKit.h>
+#import "PTAnalytics.h"
 
 static NSInteger const kPTPooImageCount = 37;
 
@@ -89,10 +90,20 @@ static NSInteger const kPTPooImageCount = 37;
      reply:^(NSDictionary *replyInfo, NSError *error) {
          this.calendarID = replyInfo[kPTSelectedCalendarKey];
      }];
+    
+    NSString *event =
+    [NSString stringWithFormat:@"%@-activated",
+     NSStringFromClass([self class])];
+    [PTAnalytics logEvent:event];
 }
 
 - (void)didDeactivate {
     [super didDeactivate];
+    
+    NSString *event =
+    [NSString stringWithFormat:@"%@-deactivated",
+     NSStringFromClass([self class])];
+    [PTAnalytics logEvent:event];
 }
 
 #pragma mark - Setup
@@ -165,7 +176,14 @@ static NSInteger const kPTPooImageCount = 37;
          }
          
          this.khaiGuard = NO;
-     }];
+         
+         NSDictionary *parameters =
+         @{@"timestamp" : [NSDate date],
+           @"calendar" : [NSString safeString:event.calendar.title],
+           };
+         
+         [PTAnalytics logEvent:@"watch-event-start" withParameters:parameters];
+     }];    
 }
 
 - (void)startPooTime:(BOOL)continuing event:(EKEvent *)event {
@@ -219,6 +237,7 @@ static NSInteger const kPTPooImageCount = 37;
 
 - (IBAction)cancel:(id)sender {
     [self cancelPooTime:YES];
+    [PTAnalytics logEvent:@"watch-event-cancelled"];
 }
 
 - (void)cancelPooTime:(BOOL)cancelPressed {

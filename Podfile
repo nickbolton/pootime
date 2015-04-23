@@ -5,10 +5,12 @@ platform :ios, '8.2'
 pod 'Bedrock/Core', :git => 'https://github.com/nickbolton/PBBedrock.git', :branch=>'master'
 pod 'Bedrock/AutoLayout', :git => 'https://github.com/nickbolton/PBBedrock.git', :branch=>'master'
 pod 'MMWormhole', '~> 1.1'
+pod 'FlurrySDK', '~> 5.4'
 
 target 'Pootime WatchKit Extension' do
     platform :ios, '8.2'
     pod 'MMWormhole', '~> 1.1'
+    pod 'FlurrySDK', '~> 5.4'
     pod 'Bedrock/Core', :git => 'https://github.com/nickbolton/PBBedrock.git', :branch=>'master'
 end
 
