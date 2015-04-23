@@ -244,6 +244,7 @@
     event.calendar = calendar;
     event.startDate = startTime;
     event.endDate = endTime;
+    event.availability = EKEventAvailabilityBusy;
     
     NSError *error = nil;
     [self.eventStore saveEvent:event span:EKSpanThisEvent commit:YES error:&error];
