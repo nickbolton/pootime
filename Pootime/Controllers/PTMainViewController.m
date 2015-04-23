@@ -77,7 +77,7 @@ static NSInteger const kPTPooImageCount = 37;
     view.text = PBLoc(@"PooTime");
     view.textAlignment = NSTextAlignmentCenter;
     view.textColor = [UIColor whiteColor];
-    view.font = [UIFont boldSystemFontOfSize:24.0f];
+    view.font = [UIFont boldSystemFontOfSize:20.0f];
     
     [self.view addSubview:view];
     
