@@ -107,7 +107,7 @@ static NSString * const kPTCalendarCellID = @"cell-id";
     // Initialize the wormhole
     self.wormhole =
     [[MMWormhole alloc]
-     initWithApplicationGroupIdentifier:@"group.com.pixelbleed.pootime"
+     initWithApplicationGroupIdentifier:@"group.com.pixelbleed.toilettime"
      optionalDirectory:@"wormhole"];
     
     // Obtain an initial message from the wormhole

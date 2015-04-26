@@ -7,7 +7,7 @@ pod 'Bedrock/AutoLayout', :git => 'https://github.com/nickbolton/PBBedrock.git',
 pod 'MMWormhole', '~> 1.1'
 pod 'FlurrySDK', '~> 5.4'
 
-target 'Pootime WatchKit Extension' do
+target 'ToiletTime WatchKit Extension' do
     platform :ios, '8.2'
     pod 'MMWormhole', '~> 1.1'
     pod 'FlurrySDK', '~> 5.4'

@@ -75,7 +75,7 @@ static NSInteger const kPTPooImageCount = 37;
     
     UILabel *view = [UILabel new];
     view.translatesAutoresizingMaskIntoConstraints = NO;
-    view.text = PBLoc(@"PooTime");
+    view.text = PBLoc(@"ToiletTime");
     view.textAlignment = NSTextAlignmentCenter;
     view.textColor = [UIColor whiteColor];
     view.font = [UIFont boldSystemFontOfSize:20.0f];
@@ -358,7 +358,7 @@ static NSInteger const kPTPooImageCount = 37;
     // Initialize the wormhole
     self.wormhole =
     [[MMWormhole alloc]
-     initWithApplicationGroupIdentifier:@"group.com.pixelbleed.pootime"
+     initWithApplicationGroupIdentifier:@"group.com.pixelbleed.toilettime"
      optionalDirectory:@"wormhole"];
     
     // Obtain an initial message from the wormhole

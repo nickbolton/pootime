@@ -48,7 +48,7 @@ static NSInteger const kPTPooImageCount = 37;
     // Initialize the wormhole
     self.wormhole =
     [[MMWormhole alloc]
-     initWithApplicationGroupIdentifier:@"group.com.pixelbleed.pootime"
+     initWithApplicationGroupIdentifier:@"group.com.pixelbleed.toilettime"
      optionalDirectory:@"wormhole"];
     
     // Obtain an initial value for the selection message from the wormhole
@@ -264,6 +264,8 @@ static NSInteger const kPTPooImageCount = 37;
     
     [self cancelWatchTimer];
     
+    [self.buttonGroup stopAnimating];
+
     UIImage *image = self.animationFrames[0];
     [self.buttonGroup setBackgroundImage:image];
 
