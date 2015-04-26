@@ -13,6 +13,7 @@
 #import "PTGlobalConstants.h"
 #import <EventKit/EventKit.h>
 #import "PTAnalytics.h"
+#import <FlurrySDK/Flurry.h>
 
 static NSInteger const kPTPooImageCount = 37;
 
@@ -40,6 +41,7 @@ static NSInteger const kPTPooImageCount = 37;
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
     
+    [self setupFlurry];
     [self setupAnimationFrames];
     [self setupViews];
     
@@ -107,6 +109,10 @@ static NSInteger const kPTPooImageCount = 37;
 }
 
 #pragma mark - Setup
+
+- (void)setupFlurry {
+    [Flurry startSession:@"KGNHPS8JKQCR8FSBNWWW"];
+}
 
 - (void)setupAnimationFrames {
 

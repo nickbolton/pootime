@@ -12,6 +12,7 @@
 #import "PTDefaultsManager.h"
 #import <EventKit/EventKit.h>
 #import "PTGlobalConstants.h"
+#import <FlurrySDK/Flurry.h>
 
 @interface AppDelegate ()
 
@@ -21,10 +22,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [self setupFlurry];
     [self setupWindow];
     return YES;
 }
-
 
 - (void)application:(UIApplication *)application
 handleWatchKitExtensionRequest:(NSDictionary *)userInfo
@@ -88,6 +89,12 @@ handleWatchKitExtensionRequest:(NSDictionary *)userInfo
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     return YES;
+}
+
+#pragma mark - Setup
+
+- (void)setupFlurry {
+    [Flurry startSession:@"KGNHPS8JKQCR8FSBNWWW"];
 }
 
 - (void)setupWindow {
