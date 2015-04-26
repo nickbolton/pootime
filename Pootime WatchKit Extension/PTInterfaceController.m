@@ -120,7 +120,7 @@ static NSInteger const kPTPooImageCount = 37;
     
     for (NSInteger idx = 0; idx < kPTPooImageCount; idx++) {
         
-        NSString *imageName = [NSString stringWithFormat:@"poo-button-watch-frame%ld", idx];
+        NSString *imageName = [NSString stringWithFormat:@"poo-button-watch-frame%ld", (long)idx];
         UIImage *image = [UIImage imageNamed:imageName];
         [animationFrames addObject:image];
     }

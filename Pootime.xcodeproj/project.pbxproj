@@ -685,6 +685,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -693,6 +694,7 @@
 				INFOPLIST_FILE = "Pootime WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -703,12 +705,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nick Bolton (NQ4MG45QU2)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Pixelbleed LLC (5ES339A7SN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Pixelbleed LLC (5ES339A7SN)";
 				IBSC_MODULE = Pootime_WatchKit_Extension;
 				INFOPLIST_FILE = "Pootime WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "90c06d73-0c82-4396-bc85-f0dc8c7fb822";
+				PROVISIONING_PROFILE = "d551c541-d51e-4844-af88-be062d76421d";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -739,12 +742,12 @@
 			baseConfigurationReference = 3B9FC8BA88949117455594D3 /* Pods-Pootime WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Pootime WatchKit Extension/Pootime WatchKit Extension.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nick Bolton (NQ4MG45QU2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nick Bolton (NQ4MG45QU2)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Pixelbleed LLC (5ES339A7SN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Pixelbleed LLC (5ES339A7SN)";
 				INFOPLIST_FILE = "Pootime WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "48f0ce00-8757-48f5-8372-a3297b195349";
+				PROVISIONING_PROFILE = "9e1d7921-0c56-4538-99c2-74ac3f229628";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
